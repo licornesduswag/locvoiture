@@ -30,7 +30,7 @@ import java.util.Date;
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Contrat {
+public class Contrat extends BDDBase {
     private Voiture voiture;
     
     private Date dateDebut;
@@ -38,6 +38,8 @@ public class Contrat {
     
     private int kilometrageDebut;
     private int kilometrageFin;
+    
+    private int kilometrageReel = 0;
 
     public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin) {
         this.voiture = voiture;
@@ -45,6 +47,9 @@ public class Contrat {
         this.dateFin = dateFin;
         this.kilometrageDebut = kilometrageDebut;
         this.kilometrageFin = kilometrageFin;
+    }
+
+    public Contrat() {
     }
     
     // Getters & setters
@@ -88,6 +93,12 @@ public class Contrat {
     public void setKilometrageFin(int kilometrageFin) {
         this.kilometrageFin = kilometrageFin;
     }
-    
-    
+
+    public int getKilometrageReel() {
+        return kilometrageReel;
+    }
+
+    public void setKilometrageReel(int kilometrageReel) {
+        this.kilometrageReel = kilometrageReel;
+    }
 }

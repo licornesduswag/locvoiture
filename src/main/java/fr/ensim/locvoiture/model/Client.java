@@ -30,11 +30,7 @@ import java.util.Date;
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Client {
-    /**
-     * ID dans la BDD du client, -1 si pas défini (utiliser auto-increment)
-     */
-    private int id = -1;
+public class Client extends BDDBase {
     
     private String nom;
     private String prenom;
@@ -53,14 +49,6 @@ public class Client {
     }
     
     // Getters & setters
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNom() {
         return nom;

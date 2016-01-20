@@ -21,62 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package fr.ensim.locvoiture.model;
 
-import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class InfoPermis extends BDDBase {
-    private int numero;
+public interface BDDInterface {
     
-    private Date dateDelivrance;
-    private String lieuDelivrance;
-    private String villeDelivrance;
-
-    public InfoPermis(int numero, Date dateDelivrance, String lieuDelivrance, String villeDelivrance) {
-        this.numero = numero;
-        this.dateDelivrance = dateDelivrance;
-        this.lieuDelivrance = lieuDelivrance;
-        this.villeDelivrance = villeDelivrance;
-    }
+    // Contrats : ajout, modification, suppression, consultation
     
-    // Getters & setters
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public Date getDateDelivrance() {
-        return dateDelivrance;
-    }
-
-    public void setDateDelivrance(Date dateDelivrance) {
-        this.dateDelivrance = dateDelivrance;
-    }
-
-    public String getLieuDelivrance() {
-        return lieuDelivrance;
-    }
-
-    public void setLieuDelivrance(String lieuDelivrance) {
-        this.lieuDelivrance = lieuDelivrance;
-    }
-
-    public String getVilleDelivrance() {
-        return villeDelivrance;
-    }
-
-    public void setVilleDelivrance(String villeDelivrance) {
-        this.villeDelivrance = villeDelivrance;
-    }
+    public void saveContrat(Contrat contrat);
+    public void removeContrat(Contrat contrat);
+    public List<Contrat> listContrats();
     
+    // Voitures : consultation
     
+    public List<Voiture> listVoitures();
+    
+    // Client : création, consultation
+    
+    public void saveClient(Client client);
+    public List<Client> listClients();
 }

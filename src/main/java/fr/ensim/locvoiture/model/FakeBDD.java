@@ -24,59 +24,50 @@
 
 package fr.ensim.locvoiture.model;
 
-import java.util.Date;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class InfoPermis extends BDDBase {
-    private int numero;
-    
-    private Date dateDelivrance;
-    private String lieuDelivrance;
-    private String villeDelivrance;
+public class FakeBDD implements BDDInterface {
 
-    public InfoPermis(int numero, Date dateDelivrance, String lieuDelivrance, String villeDelivrance) {
-        this.numero = numero;
-        this.dateDelivrance = dateDelivrance;
-        this.lieuDelivrance = lieuDelivrance;
-        this.villeDelivrance = villeDelivrance;
-    }
-    
-    // Getters & setters
-
-    public int getNumero() {
-        return numero;
+    @Override
+    public void saveContrat(Contrat contrat) {
+        System.out.println("SaveContrat " + contrat);
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    @Override
+    public void removeContrat(Contrat contrat) {
+        System.out.println("RemoveContrat " + contrat);
     }
 
-    public Date getDateDelivrance() {
-        return dateDelivrance;
+    @Override
+    public List<Contrat> listContrats() {
+        System.out.println("ListContrats");
+        
+        return new ArrayList<>();
     }
 
-    public void setDateDelivrance(Date dateDelivrance) {
-        this.dateDelivrance = dateDelivrance;
+    @Override
+    public List<Voiture> listVoitures() {
+        System.out.println("ListVoitures");
+        
+        return new ArrayList<>();
     }
 
-    public String getLieuDelivrance() {
-        return lieuDelivrance;
+    @Override
+    public void saveClient(Client client) {
+        System.out.println("SaveClient");
     }
 
-    public void setLieuDelivrance(String lieuDelivrance) {
-        this.lieuDelivrance = lieuDelivrance;
+    @Override
+    public List<Client> listClients() {
+        System.out.println("ListClients");
+        
+        return new ArrayList<>();
     }
 
-    public String getVilleDelivrance() {
-        return villeDelivrance;
-    }
-
-    public void setVilleDelivrance(String villeDelivrance) {
-        this.villeDelivrance = villeDelivrance;
-    }
-    
-    
 }

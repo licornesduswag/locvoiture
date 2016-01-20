@@ -24,59 +24,18 @@
 
 package fr.ensim.locvoiture.model;
 
-import java.util.Date;
-
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class InfoPermis extends BDDBase {
-    private int numero;
-    
-    private Date dateDelivrance;
-    private String lieuDelivrance;
-    private String villeDelivrance;
+public class BDDBase {
+    private int id = -1;
 
-    public InfoPermis(int numero, Date dateDelivrance, String lieuDelivrance, String villeDelivrance) {
-        this.numero = numero;
-        this.dateDelivrance = dateDelivrance;
-        this.lieuDelivrance = lieuDelivrance;
-        this.villeDelivrance = villeDelivrance;
-    }
-    
-    // Getters & setters
-
-    public int getNumero() {
-        return numero;
+    public int getId() {
+        return id;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setId(int id) {
+        this.id = id;
     }
-
-    public Date getDateDelivrance() {
-        return dateDelivrance;
-    }
-
-    public void setDateDelivrance(Date dateDelivrance) {
-        this.dateDelivrance = dateDelivrance;
-    }
-
-    public String getLieuDelivrance() {
-        return lieuDelivrance;
-    }
-
-    public void setLieuDelivrance(String lieuDelivrance) {
-        this.lieuDelivrance = lieuDelivrance;
-    }
-
-    public String getVilleDelivrance() {
-        return villeDelivrance;
-    }
-
-    public void setVilleDelivrance(String villeDelivrance) {
-        this.villeDelivrance = villeDelivrance;
-    }
-    
-    
 }

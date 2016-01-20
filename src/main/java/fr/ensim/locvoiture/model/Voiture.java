@@ -28,7 +28,7 @@ package fr.ensim.locvoiture.model;
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Voiture {
+public class Voiture extends BDDBase {
     private String matricule;
     private String marque;
     private int kilometrage;
