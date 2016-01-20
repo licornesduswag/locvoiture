@@ -94,6 +94,8 @@ public class Contrat extends BDDBase {
 
     @Override
     public String toString() {
-        return "Contrat{" + "voiture=" + voiture + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", kilometrageDebut=" + kilometrageDebut + ", kilometrageFin=" + kilometrageFin + ", kilometrageReel=" + kilometrageReel + '}';
+        return "Contrat{" + "voiture=" + voiture + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", kilometrageDebut=" + kilometrageDebut + ", kilometrageFin=" + kilometrageFin + '}';
     }
+
+    
 }
