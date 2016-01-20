@@ -30,63 +30,52 @@ import java.util.Date;
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Contrat {
-    private Voiture voiture;
+public class InfoPermis {
+    private int numero;
     
-    private Date dateDebut;
-    private Date dateFin;
-    
-    private int kilometrageDebut;
-    private int kilometrageFin;
+    private Date dateDelivrance;
+    private String lieuDelivrance;
+    private String villeDelivrance;
 
-    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin) {
-        this.voiture = voiture;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.kilometrageDebut = kilometrageDebut;
-        this.kilometrageFin = kilometrageFin;
+    public InfoPermis(int numero, Date dateDelivrance, String lieuDelivrance, String villeDelivrance) {
+        this.numero = numero;
+        this.dateDelivrance = dateDelivrance;
+        this.lieuDelivrance = lieuDelivrance;
+        this.villeDelivrance = villeDelivrance;
     }
     
     // Getters & setters
 
-    public Voiture getVoiture() {
-        return voiture;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setVoiture(Voiture voiture) {
-        this.voiture = voiture;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
-    public Date getDateDebut() {
-        return dateDebut;
+    public Date getDateDelivrance() {
+        return dateDelivrance;
     }
 
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
+    public void setDateDelivrance(Date dateDelivrance) {
+        this.dateDelivrance = dateDelivrance;
     }
 
-    public Date getDateFin() {
-        return dateFin;
+    public String getLieuDelivrance() {
+        return lieuDelivrance;
     }
 
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
+    public void setLieuDelivrance(String lieuDelivrance) {
+        this.lieuDelivrance = lieuDelivrance;
     }
 
-    public int getKilometrageDebut() {
-        return kilometrageDebut;
+    public String getVilleDelivrance() {
+        return villeDelivrance;
     }
 
-    public void setKilometrageDebut(int kilometrageDebut) {
-        this.kilometrageDebut = kilometrageDebut;
-    }
-
-    public int getKilometrageFin() {
-        return kilometrageFin;
-    }
-
-    public void setKilometrageFin(int kilometrageFin) {
-        this.kilometrageFin = kilometrageFin;
+    public void setVilleDelivrance(String villeDelivrance) {
+        this.villeDelivrance = villeDelivrance;
     }
     
     

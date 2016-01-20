@@ -24,69 +24,55 @@
 
 package fr.ensim.locvoiture.model;
 
-import java.util.Date;
-
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Contrat {
-    private Voiture voiture;
-    
-    private Date dateDebut;
-    private Date dateFin;
-    
-    private int kilometrageDebut;
-    private int kilometrageFin;
+public class Voiture {
+    private String matricule;
+    private String marque;
+    private int kilometrage;
+    private String couleur;
 
-    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin) {
-        this.voiture = voiture;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.kilometrageDebut = kilometrageDebut;
-        this.kilometrageFin = kilometrageFin;
+    public Voiture(String matricule, String marque, int kilometrage, String couleur) {
+        this.matricule = matricule;
+        this.marque = marque;
+        this.kilometrage = kilometrage;
+        this.couleur = couleur;
     }
     
     // Getters & setters
 
-    public Voiture getVoiture() {
-        return voiture;
+    public String getMatricule() {
+        return matricule;
     }
 
-    public void setVoiture(Voiture voiture) {
-        this.voiture = voiture;
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
     }
 
-    public Date getDateDebut() {
-        return dateDebut;
+    public String getMarque() {
+        return marque;
     }
 
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
+    public void setMarque(String marque) {
+        this.marque = marque;
     }
 
-    public Date getDateFin() {
-        return dateFin;
+    public int getKilometrage() {
+        return kilometrage;
     }
 
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
+    public void setKilometrage(int kilometrage) {
+        this.kilometrage = kilometrage;
     }
 
-    public int getKilometrageDebut() {
-        return kilometrageDebut;
+    public String getCouleur() {
+        return couleur;
     }
 
-    public void setKilometrageDebut(int kilometrageDebut) {
-        this.kilometrageDebut = kilometrageDebut;
-    }
-
-    public int getKilometrageFin() {
-        return kilometrageFin;
-    }
-
-    public void setKilometrageFin(int kilometrageFin) {
-        this.kilometrageFin = kilometrageFin;
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
     }
     
     
