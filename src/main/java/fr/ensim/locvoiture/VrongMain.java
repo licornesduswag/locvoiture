@@ -23,6 +23,9 @@
  */
 package fr.ensim.locvoiture;
 
+import fr.ensim.locvoiture.controller.Controller;
+import fr.ensim.locvoiture.view.LoginWindow;
+
 /**
  *
  * @author Wojciech Rousseau (Vrong)
@@ -31,5 +34,6 @@ public class VrongMain {
     public static void main(String args[])
     {
         System.out.println("test");
+        new LoginWindow(new Controller());
     }
 }

@@ -23,10 +23,44 @@
  */
 package fr.ensim.locvoiture.view;
 
+import fr.ensim.locvoiture.controller.Controller;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public class LoginWindow {
+public class LoginWindow extends MvcView {
     
+    
+    private JTextField login;
+    private JTextField password;
+    private JButton connexion;
+    
+    public LoginWindow(Controller controller)
+    {
+        super(controller);
+        this.setLayout(new GridLayout(6, 1));
+        JLabel tmp = new JLabel("Connexion");
+        //TODO changer la taille tu texte Connexion
+        this.add(tmp);
+        
+        this.add(new JLabel("Login"));
+        
+        login = new JTextField();
+        this.add(login);
+        
+        this.add(new JLabel("Password"));
+        
+        password = new JTextField();
+        this.add(password);
+        
+        this.add(connexion);
+        
+        this.setVisible(true);
+    }
 }

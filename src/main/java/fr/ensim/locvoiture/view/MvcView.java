@@ -23,10 +23,18 @@
  */
 package fr.ensim.locvoiture.view;
 
+import fr.ensim.locvoiture.controller.Controller;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public class MvcView {
+public class MvcView extends JFrame {
     
+    protected Controller controller;
+    public MvcView(Controller controller)
+    {
+        this.controller = controller;
+    }
 }
