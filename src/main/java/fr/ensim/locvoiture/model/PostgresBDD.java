@@ -26,6 +26,7 @@ package fr.ensim.locvoiture.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -73,7 +74,6 @@ public class PostgresBDD implements BDDInterface {
             ArrayList<Contrat> contrats = new ArrayList<>();
             
             while (result.next()) {
-                System.out.println(result.getString("matricule"));
                 
                 Voiture v = new Voiture(result.getString("matricule"), result.getString("marque"), result.getInt("kilometrage"), result.getString("couleur"), result.getInt("id_voiture"));
                 Contrat c = new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), result.getInt("id_contrat"));
@@ -113,7 +113,27 @@ public class PostgresBDD implements BDDInterface {
 
     @Override
     public void saveClient(Client client) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String insert = "INSERT INTO clients VALUES (?,?,?,?,?,?,?,?,?)";
+            
+            PreparedStatement ps = conn.prepareStatement(insert);
+            ps.setInt(1, 42); // id
+            ps.setString(2, client.getNom());
+            ps.setString(3, client.getPrenom());
+            ps.setDate(4, new java.sql.Date(client.getDateNaissance().getTime()));
+            ps.setString(5, client.getLieuNaissance());
+            ps.setInt(6, client.getInfoPermis().getNumero());
+            ps.setDate(7, new java.sql.Date(client.getInfoPermis().getDateDelivrance().getTime()));
+            ps.setString(8, client.getInfoPermis().getLieuDelivrance());
+            ps.setString(9, client.getInfoPermis().getVilleDelivrance());
+            
+            if (ps.executeUpdate() != 1) {
+                System.out.println("L'insertion a échoué");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -125,10 +145,7 @@ public class PostgresBDD implements BDDInterface {
             
             while(result.next()) {
                 InfoPermis ip = new InfoPermis(result.getInt("permis_numero"), result.getDate("permis_date_delivrance"), result.getString("permis_lieu_delivrance"), result.getString("permis_ville_delivrance"));
-                Client c = new Client(result.getString("nom"), result.getString("prenom"), result.getDate("date_naissance"), result.getString("lieu_naissance"), ip);
-                
-                // Ne fonctionne pas ?
-                ip.setId(result.getInt("id_client"));
+                Client c = new Client(result.getString("nom"), result.getString("prenom"), result.getDate("date_naissance"), result.getString("lieu_naissance"), ip, result.getInt("id_client"));
                 
                 clients.add(c);
             }

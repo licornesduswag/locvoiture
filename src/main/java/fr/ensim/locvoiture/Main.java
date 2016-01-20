@@ -26,8 +26,10 @@ package fr.ensim.locvoiture;
 
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
+import fr.ensim.locvoiture.model.InfoPermis;
 import fr.ensim.locvoiture.model.PostgresBDD;
 import fr.ensim.locvoiture.model.Voiture;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,5 +68,8 @@ public class Main {
             System.out.println(v.getId());
             System.out.println(v);
         }
+        
+        Client c = new Client("toto", "truc", new Date(123456), "Le Mans", new InfoPermis(123456, new Date(123456), "Le Mans", "Le Mans"));
+        bdd.saveClient(c);
     }
 }
