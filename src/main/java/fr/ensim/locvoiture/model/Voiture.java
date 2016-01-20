@@ -47,9 +47,7 @@ public class Voiture extends BDDBase {
         this.marque = marque;
         this.kilometrage = kilometrage;
         this.couleur = couleur;
-    }
-    
-    
+    }    
     
     // Getters & setters
 

@@ -25,7 +25,9 @@
 package fr.ensim.locvoiture;
 
 import fr.ensim.locvoiture.model.Client;
+import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.PostgresBDD;
+import fr.ensim.locvoiture.model.Voiture;
 import java.util.List;
 
 /**
@@ -38,18 +40,31 @@ public class Main {
         
         PostgresBDD bdd = new PostgresBDD();
         
-        /*List<Contrat> list = bdd.listContrats();
+        System.out.println("Liste des contrats...");
+        
+        List<Contrat> list = bdd.listContrats();
         
         for (Contrat c : list) {
             System.out.println(c.getId());
             System.out.println(c);
-        }*/
+        }
         
-        List<Client> list = bdd.listClients();
+        System.out.println("Liste des clients...");
         
-        for (Client c : list) {
+        List<Client> listC = bdd.listClients();
+        
+        for (Client c : listC) {
             System.out.println(c.getId());
             System.out.println(c);
+        }
+        
+        System.out.println("Liste des voitures...");
+        
+        List<Voiture> listV = bdd.listVoitures();
+        
+        for (Voiture v : listV) {
+            System.out.println(v.getId());
+            System.out.println(v);
         }
     }
 }
