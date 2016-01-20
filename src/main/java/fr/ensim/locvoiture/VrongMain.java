@@ -35,5 +35,6 @@ public class VrongMain {
     {
         System.out.println("test");
         new LoginWindow(new Controller());
+        System.out.println("fin");
     }
 }

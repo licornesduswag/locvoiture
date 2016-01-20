@@ -29,4 +29,12 @@ package fr.ensim.locvoiture.controller;
  */
 public class Controller {
     
+    
+    public boolean checkLogin(String login, String password)
+    {
+        //TODO NotImplementedException attention
+        
+        
+        return true;
+    }
 }

@@ -24,10 +24,14 @@
 package fr.ensim.locvoiture.view;
 
 import fr.ensim.locvoiture.controller.Controller;
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 
 /**
@@ -40,26 +44,71 @@ public class LoginWindow extends MvcView {
     private JTextField login;
     private JTextField password;
     private JButton connexion;
+    private JLabel titre = new JLabel("Veuillez vous connecter", JLabel.CENTER);
+    
     
     public LoginWindow(Controller controller)
     {
         super(controller);
+        
+        this.setSize(300, 300);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        
         this.setLayout(new GridLayout(6, 1));
-        JLabel tmp = new JLabel("Connexion");
-        //TODO changer la taille tu texte Connexion
+        
+        JLabel tmp = titre;
+        tmp.setOpaque(true);
+        tmp.setBackground(Color.CYAN);
+        //TODO changer la taille du texte Connexion
         this.add(tmp);
         
-        this.add(new JLabel("Login"));
+        tmp = new JLabel("Login", JLabel.CENTER);
+        this.add(tmp);
         
         login = new JTextField();
         this.add(login);
         
-        this.add(new JLabel("Password"));
+        tmp = new JLabel("Password", JLabel.CENTER);
+        this.add(tmp);
         
         password = new JTextField();
         this.add(password);
         
+        connexion = new JButton("Se connecter");
+        connexion.setBackground(Color.GREEN);
         this.add(connexion);
+        
+        connexion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                connexion.setText("Connexion en cours...");
+                connexion.setBackground(Color.GRAY);
+                if(controller.checkLogin(login.getText(), password.getText()))
+                {
+                    LoginWindow.this.setVisible(false);
+                    
+                    
+                    new MainWindow(controller, login.getText(), password.getText());
+                    
+                    titre.setText("Veuillez vous connecter");
+                    titre.setBackground(Color.CYAN);
+                            
+                }else
+                {
+                    titre.setText("Login ou mot de passe incorrect");
+                    titre.setBackground(Color.red);
+                }
+                
+                LoginWindow.this.setVisible(true);
+                connexion.setText("Connexion");
+                connexion.setBackground(Color.GREEN);
+            }
+        });
+        
+        
+        
         
         this.setVisible(true);
     }
