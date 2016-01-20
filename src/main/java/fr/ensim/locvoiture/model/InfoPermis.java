@@ -52,6 +52,7 @@ public class InfoPermis extends BDDBase {
 
     public void setNumero(int numero) {
         this.numero = numero;
+        notifyObservers();
     }
 
     public Date getDateDelivrance() {
@@ -60,6 +61,7 @@ public class InfoPermis extends BDDBase {
 
     public void setDateDelivrance(Date dateDelivrance) {
         this.dateDelivrance = dateDelivrance;
+        notifyObservers();
     }
 
     public String getLieuDelivrance() {
@@ -68,6 +70,7 @@ public class InfoPermis extends BDDBase {
 
     public void setLieuDelivrance(String lieuDelivrance) {
         this.lieuDelivrance = lieuDelivrance;
+        notifyObservers();
     }
 
     public String getVilleDelivrance() {
@@ -76,6 +79,7 @@ public class InfoPermis extends BDDBase {
 
     public void setVilleDelivrance(String villeDelivrance) {
         this.villeDelivrance = villeDelivrance;
+        notifyObservers();
     }
     
     

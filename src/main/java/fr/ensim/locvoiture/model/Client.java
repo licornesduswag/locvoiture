@@ -56,6 +56,7 @@ public class Client extends BDDBase {
 
     public void setNom(String nom) {
         this.nom = nom;
+        notifyObservers();
     }
 
     public String getPrenom() {
@@ -64,6 +65,7 @@ public class Client extends BDDBase {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+        notifyObservers();
     }
 
     public Date getDateNaissance() {
@@ -72,6 +74,7 @@ public class Client extends BDDBase {
 
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
+        notifyObservers();
     }
 
     public String getLieuNaissance() {
@@ -80,6 +83,7 @@ public class Client extends BDDBase {
 
     public void setLieuNaissance(String lieuNaissance) {
         this.lieuNaissance = lieuNaissance;
+        notifyObservers();
     }
 
     public InfoPermis getInfoPermis() {
@@ -88,6 +92,7 @@ public class Client extends BDDBase {
 
     public void setInfoPermis(InfoPermis infoPermis) {
         this.infoPermis = infoPermis;
+        notifyObservers();
     }
 
     

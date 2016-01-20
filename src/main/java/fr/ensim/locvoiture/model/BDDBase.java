@@ -24,11 +24,13 @@
 
 package fr.ensim.locvoiture.model;
 
+import fr.ensim.locvoiture.observer.AbstractObservable;
+
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class BDDBase {
+public class BDDBase extends AbstractObservable {
     private int id = -1;
 
     public int getId() {

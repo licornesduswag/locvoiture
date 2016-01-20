@@ -49,6 +49,7 @@ public class Voiture extends BDDBase {
 
     public void setMatricule(String matricule) {
         this.matricule = matricule;
+        notifyObservers();
     }
 
     public String getMarque() {
@@ -57,6 +58,7 @@ public class Voiture extends BDDBase {
 
     public void setMarque(String marque) {
         this.marque = marque;
+        notifyObservers();
     }
 
     public int getKilometrage() {
@@ -65,6 +67,7 @@ public class Voiture extends BDDBase {
 
     public void setKilometrage(int kilometrage) {
         this.kilometrage = kilometrage;
+        notifyObservers();
     }
 
     public String getCouleur() {
@@ -73,6 +76,7 @@ public class Voiture extends BDDBase {
 
     public void setCouleur(String couleur) {
         this.couleur = couleur;
+        notifyObservers();
     }
 
     @Override

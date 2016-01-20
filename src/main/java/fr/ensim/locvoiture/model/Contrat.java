@@ -58,6 +58,7 @@ public class Contrat extends BDDBase {
 
     public void setVoiture(Voiture voiture) {
         this.voiture = voiture;
+        notifyObservers();
     }
 
     public Date getDateDebut() {
@@ -66,6 +67,7 @@ public class Contrat extends BDDBase {
 
     public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
+        notifyObservers();
     }
 
     public Date getDateFin() {
@@ -74,6 +76,7 @@ public class Contrat extends BDDBase {
 
     public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
+        notifyObservers();
     }
 
     public int getKilometrageDebut() {
@@ -82,6 +85,7 @@ public class Contrat extends BDDBase {
 
     public void setKilometrageDebut(int kilometrageDebut) {
         this.kilometrageDebut = kilometrageDebut;
+        notifyObservers();
     }
 
     public int getKilometrageFin() {
@@ -90,12 +94,11 @@ public class Contrat extends BDDBase {
 
     public void setKilometrageFin(int kilometrageFin) {
         this.kilometrageFin = kilometrageFin;
+        notifyObservers();
     }
 
     @Override
     public String toString() {
         return "Contrat{" + "voiture=" + voiture + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", kilometrageDebut=" + kilometrageDebut + ", kilometrageFin=" + kilometrageFin + '}';
     }
-
-    
 }
