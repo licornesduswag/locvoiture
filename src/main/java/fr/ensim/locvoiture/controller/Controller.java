@@ -23,6 +23,11 @@
  */
 package fr.ensim.locvoiture.controller;
 
+import fr.ensim.locvoiture.model.Contrat;
+import fr.ensim.locvoiture.model.Voiture;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Wojciech Rousseau (Vrong)
@@ -36,5 +41,18 @@ public class Controller {
         
         
         return true;
+    }
+    
+    
+    public List<Voiture> getVoitures()
+    {
+        ArrayList<Voiture> liste = new ArrayList<Voiture>();
+        return liste;
+    }
+    
+    public List<Contrat> getContrats(Voiture v)
+    {
+        ArrayList<Contrat> liste = new ArrayList<Contrat>();
+        return liste;
     }
 }

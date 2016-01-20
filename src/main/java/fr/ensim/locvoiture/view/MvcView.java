@@ -37,4 +37,5 @@ public class MvcView extends JFrame {
     {
         this.controller = controller;
     }
+    
 }

@@ -24,6 +24,7 @@
 package fr.ensim.locvoiture.view;
 
 import fr.ensim.locvoiture.controller.Controller;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,9 +43,21 @@ public class MainWindow extends MvcView {
         this.login = login;
         this.mdp = mdp;
         
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.addRow(new Object[]{"1", "2", new Integer(3), "4", new Integer(5)});
+        
+        initVoitureTable();
+        
+        
         this.setVisible(true);
     }
 
+    public void initVoitureTable()
+    {
+        List<Voiture> voitures = controller.getVoitures();
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,7 +90,7 @@ public class MainWindow extends MvcView {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
+                {"test", "test",  new Integer(25), "rouge",  new Integer(85)},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null}
@@ -94,9 +107,7 @@ public class MainWindow extends MvcView {
                 return types [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,7 +151,7 @@ public class MainWindow extends MvcView {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

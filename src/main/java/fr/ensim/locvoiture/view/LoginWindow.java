@@ -28,10 +28,10 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 
 /**
@@ -89,11 +89,14 @@ public class LoginWindow extends MvcView {
                 {
                     LoginWindow.this.setVisible(false);
                     
-                    
                     new MainWindow(controller, login.getText(), password.getText());
+                    
+                    
+                    //LoginWindow.this.dispatchEvent(new WindowEvent(LoginWindow.this, WindowEvent.WINDOW_CLOSING));
                     
                     titre.setText("Veuillez vous connecter");
                     titre.setBackground(Color.CYAN);
+                    LoginWindow.this.dispose();
                             
                 }else
                 {
@@ -101,9 +104,10 @@ public class LoginWindow extends MvcView {
                     titre.setBackground(Color.red);
                 }
                 
-                LoginWindow.this.setVisible(true);
+                /*LoginWindow.this.setVisible(true);
                 connexion.setText("Connexion");
-                connexion.setBackground(Color.GREEN);
+                connexion.setBackground(Color.GREEN);*/
+                
             }
         });
         
