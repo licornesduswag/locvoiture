@@ -30,7 +30,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -71,13 +70,14 @@ public class PostgresBDD implements BDDInterface {
     @Override
     public List<Contrat> listContrats() {
         try {
-            ResultSet result = stmt.executeQuery("SELECT * FROM contrats NATURAL JOIN voitures");
+            ResultSet result = stmt.executeQuery("SELECT * FROM contrats NATURAL JOIN voitures NATURAL JOIN agents");
             ArrayList<Contrat> contrats = new ArrayList<>();
             
             while (result.next()) {
                 
+                Agent a = new Agent(result.getString("login"), result.getString("mdp"), result.getString("nom"), result.getString("prenom"), result.getInt("id_agent"));
                 Voiture v = new Voiture(result.getString("matricule"), result.getString("marque"), result.getInt("kilometrage"), result.getString("couleur"), result.getInt("id_voiture"));
-                Contrat c = new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), result.getInt("id_contrat"));
+                Contrat c = new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), a, result.getInt("id_contrat"));
                 
                 contrats.add(c);
             }
