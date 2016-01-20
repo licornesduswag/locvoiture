@@ -24,7 +24,6 @@
 
 package fr.ensim.locvoiture.model;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -24,6 +24,10 @@
 
 package fr.ensim.locvoiture;
 
+import fr.ensim.locvoiture.model.Contrat;
+import fr.ensim.locvoiture.model.PostgresBDD;
+import java.util.List;
+
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
@@ -31,5 +35,13 @@ package fr.ensim.locvoiture;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, world!");
+        
+        PostgresBDD bdd = new PostgresBDD();
+        
+        List<Contrat> list = bdd.listContrats();
+        
+        for (Contrat c : list) {
+            System.out.println(c);
+        }
     }
 }
