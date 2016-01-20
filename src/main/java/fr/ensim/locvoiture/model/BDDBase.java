@@ -33,6 +33,13 @@ import fr.ensim.locvoiture.observer.AbstractObservable;
 public class BDDBase extends AbstractObservable {
     private int id = -1;
 
+    public BDDBase() {
+    }
+    
+    public BDDBase(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

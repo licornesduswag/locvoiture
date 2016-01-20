@@ -81,6 +81,11 @@ public class InfoPermis extends BDDBase {
         this.villeDelivrance = villeDelivrance;
         notifyObservers();
     }
+
+    @Override
+    public String toString() {
+        return "InfoPermis{" + "numero=" + numero + ", dateDelivrance=" + dateDelivrance + ", lieuDelivrance=" + lieuDelivrance + ", villeDelivrance=" + villeDelivrance + '}';
+    }
     
     
 }

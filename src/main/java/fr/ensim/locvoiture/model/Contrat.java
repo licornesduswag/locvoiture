@@ -47,6 +47,15 @@ public class Contrat extends BDDBase {
         this.kilometrageFin = kilometrageFin;
     }
 
+    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin, int id) {
+        super(id);
+        this.voiture = voiture;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.kilometrageDebut = kilometrageDebut;
+        this.kilometrageFin = kilometrageFin;
+    }    
+
     public Contrat() {
     }
     

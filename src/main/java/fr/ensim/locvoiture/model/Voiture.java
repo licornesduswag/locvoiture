@@ -40,6 +40,16 @@ public class Voiture extends BDDBase {
         this.kilometrage = kilometrage;
         this.couleur = couleur;
     }
+
+    public Voiture(String matricule, String marque, int kilometrage, String couleur, int id) {
+        super(id);
+        this.matricule = matricule;
+        this.marque = marque;
+        this.kilometrage = kilometrage;
+        this.couleur = couleur;
+    }
+    
+    
     
     // Getters & setters
 

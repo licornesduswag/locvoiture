@@ -47,6 +47,15 @@ public class Client extends BDDBase {
         this.lieuNaissance = lieuNaissance;
         this.infoPermis = infoPermis;
     }
+
+    public Client(String nom, String prenom, Date dateNaissance, String lieuNaissance, InfoPermis infoPermis, int id) {
+        super(id);
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
+        this.infoPermis = infoPermis;
+    }
     
     // Getters & setters
 
@@ -93,6 +102,11 @@ public class Client extends BDDBase {
     public void setInfoPermis(InfoPermis infoPermis) {
         this.infoPermis = infoPermis;
         notifyObservers();
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" + "nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", lieuNaissance=" + lieuNaissance + ", infoPermis=" + infoPermis + '}';
     }
 
     
