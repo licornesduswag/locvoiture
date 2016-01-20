@@ -30,6 +30,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -151,6 +152,27 @@ public class PostgresBDD implements BDDInterface {
             }
             
             return clients;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+    }
+    
+    @Override
+    public List<Agent> listAgents() {
+        try {
+            ResultSet result = stmt.executeQuery("SELECT * FROM agents");
+            
+            List<Agent> agents = new ArrayList<>();
+            
+            while(result.next()) {
+                Agent a = new Agent(result.getString("login"), result.getString("mdp"), result.getString("nom"), result.getString("prenom"), result.getInt("id_agent"));
+                agents.add(a);
+            }
+            
+            return agents;
             
         } catch (SQLException ex) {
             Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);

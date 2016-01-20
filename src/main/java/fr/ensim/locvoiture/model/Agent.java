@@ -21,32 +21,51 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package fr.ensim.locvoiture.model;
 
-import java.util.List;
+package fr.ensim.locvoiture.model;
 
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public interface BDDInterface {
+public class Agent extends Personne {
+    private String login;
+    private String mdp;
+
+    public Agent(String login, String mdp, String nom, String prenom) {
+        super(nom, prenom);
+        this.login = login;
+        this.mdp = mdp;
+    }
+
+    public Agent(String login, String mdp, String nom, String prenom, int id) {
+        super(nom, prenom, id);
+        this.login = login;
+        this.mdp = mdp;
+    }
     
-    // Contrats : ajout, modification, suppression, consultation
+    // Getters & setters
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    @Override
+    public String toString() {
+        return "Agent{" + "login=" + login + ", mdp=" + mdp + '}';
+    }
     
-    public void saveContrat(Contrat contrat);
-    public void removeContrat(Contrat contrat);
-    public List<Contrat> listContrats();
     
-    // Voitures : consultation
-    
-    public List<Voiture> listVoitures();
-    
-    // Client : création, consultation
-    
-    public void saveClient(Client client);
-    public List<Client> listClients();
-    
-    // Agent : consultation
-    
-    public List<Agent> listAgents();
 }

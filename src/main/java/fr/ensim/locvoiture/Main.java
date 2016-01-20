@@ -24,6 +24,7 @@
 
 package fr.ensim.locvoiture;
 
+import fr.ensim.locvoiture.model.Agent;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.InfoPermis;
@@ -67,6 +68,15 @@ public class Main {
         for (Voiture v : listV) {
             System.out.println(v.getId());
             System.out.println(v);
+        }
+        
+        System.out.println("Liste des agents...");
+        
+        List<Agent> listA = bdd.listAgents();
+        
+        for (Agent a : listA) {
+            System.out.println(a.getId());
+            System.out.println(a);
         }
         
         Client c = new Client("toto", "truc", new Date(123456), "Le Mans", new InfoPermis(123456, new Date(123456), "Le Mans", "Le Mans"));
