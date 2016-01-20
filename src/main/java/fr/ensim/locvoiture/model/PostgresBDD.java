@@ -181,4 +181,22 @@ public class PostgresBDD implements BDDInterface {
         return null;
     }
 
+    @Override
+    public boolean checkLogin(String login, String mdp) {
+        try {
+            PreparedStatement p = conn.prepareStatement("SELECT * FROM agents WHERE login = ? AND mdp = ?");
+            
+            p.setString(1, login);
+            p.setString(2, mdp);
+            
+            // true si il y a au moins un resultat, false sinon
+            return p.executeQuery().next();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
+
 }

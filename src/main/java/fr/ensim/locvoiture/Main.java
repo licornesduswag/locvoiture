@@ -81,5 +81,11 @@ public class Main {
         
         Client c = new Client("toto", "truc", new Date(123456), "Le Mans", new InfoPermis(123456, new Date(123456), "Le Mans", "Le Mans"));
         bdd.saveClient(c);
+        
+        System.out.println("checklogin(test,test)");
+        System.out.println(bdd.checkLogin("test", "test"));
+        
+        System.out.println("checklogin(truc,muche)");
+        System.out.println(bdd.checkLogin("truc", "muche"));
     }
 }

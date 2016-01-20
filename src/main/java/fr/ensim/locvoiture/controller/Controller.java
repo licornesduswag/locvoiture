@@ -23,18 +23,20 @@
  */
 package fr.ensim.locvoiture.controller;
 
+import fr.ensim.locvoiture.model.Agent;
+import fr.ensim.locvoiture.model.BDDInterface;
+import java.util.List;
+
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
 public class Controller {
     
+    private BDDInterface bdd;
     
     public boolean checkLogin(String login, String password)
     {
-        //TODO NotImplementedException attention
-        
-        
-        return true;
+        return bdd.checkLogin(login, password);
     }
 }
