@@ -28,7 +28,7 @@ import fr.ensim.locvoiture.model.Agent;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.InfoPermis;
-import fr.ensim.locvoiture.model.PostgresBDD;
+import fr.ensim.locvoiture.bdd.PostgresBDD;
 import fr.ensim.locvoiture.model.Voiture;
 import java.util.Date;
 import java.util.List;

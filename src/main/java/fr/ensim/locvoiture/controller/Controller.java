@@ -25,12 +25,11 @@ package fr.ensim.locvoiture.controller;
 
 
 import fr.ensim.locvoiture.model.Agent;
-import fr.ensim.locvoiture.model.BDDInterface;
+import fr.ensim.locvoiture.bdd.BDDInterface;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
-import fr.ensim.locvoiture.model.PostgresBDD;
+import fr.ensim.locvoiture.bdd.PostgresBDD;
 import fr.ensim.locvoiture.model.Voiture;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,11 +39,19 @@ import java.util.List;
 public class Controller extends AbstractController{
     
     private final BDDInterface bdd = new PostgresBDD();
+    private Agent agent = null;
     
     @Override
     public boolean checkLogin(String login, String password)
     {
-        return bdd.checkLogin(login, password);
+        Agent a = bdd.checkLogin(login, password);
+        
+        if (a != null) {
+            agent = a;
+            return true;
+        }
+        
+        return false;
     }
     
     @Override
@@ -71,21 +78,25 @@ public class Controller extends AbstractController{
 
     @Override
     public boolean addClient(Client c) {
-        return false;
+        bdd.saveClient(c);
+        return true;
     }
 
     @Override
     public boolean addContrat(Contrat c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        bdd.saveContrat(c);
+        return true;
     }
 
     @Override
     public boolean modifierContrat(Contrat c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        bdd.removeContrat(c);
+        bdd.saveContrat(c);
+        return true;
     }
 
     @Override
     public Agent getConnectedAgent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return agent;
     }
 }

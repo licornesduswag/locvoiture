@@ -22,8 +22,13 @@
  * THE SOFTWARE.
  */
 
-package fr.ensim.locvoiture.model;
+package fr.ensim.locvoiture.bdd;
 
+import fr.ensim.locvoiture.model.Agent;
+import fr.ensim.locvoiture.model.Client;
+import fr.ensim.locvoiture.model.Contrat;
+import fr.ensim.locvoiture.model.InfoPermis;
+import fr.ensim.locvoiture.model.Voiture;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -59,12 +64,35 @@ public class PostgresBDD implements BDDInterface {
 
     @Override
     public void saveContrat(Contrat contrat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement prep = conn.prepareStatement("INSERT INTO contrats VALUES (?,?,?,?,?,?,?)");
+            
+            prep.setInt(1, contrat.getId());
+            prep.setInt(2, contrat.getVoiture().getId());
+            prep.setDate(3, new java.sql.Date(contrat.getDateDebut().getTime()));
+            prep.setDate(4, new java.sql.Date(contrat.getDateFin().getTime()));
+            prep.setInt(5, contrat.getKilometrageDebut());
+            prep.setInt(6, contrat.getKilometrageFin());
+            prep.setInt(7, contrat.getAgent().getId());
+            
+            if (prep.executeUpdate() != 1) {
+                System.out.println("L'insertion a échoué");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void removeContrat(Contrat contrat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement prep = conn.prepareStatement("DELETE FROM contrats WHERE id_contrat = ?");
+            prep.setInt(1, contrat.getId());
+            prep.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -184,21 +212,23 @@ public class PostgresBDD implements BDDInterface {
     }
 
     @Override
-    public boolean checkLogin(String login, String mdp) {
+    public Agent checkLogin(String login, String mdp) {
         try {
             PreparedStatement p = conn.prepareStatement("SELECT * FROM agents WHERE login = ? AND mdp = ?");
             
             p.setString(1, login);
             p.setString(2, mdp);
             
-            // true si il y a au moins un resultat, false sinon
-            return p.executeQuery().next();
+            ResultSet result = p.executeQuery();
+            if (result.next()) {
+                return Agent.fromResultSet(result);
+            }
             
         } catch (SQLException ex) {
             Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return false;
+        return null;
     }
 
     @Override
