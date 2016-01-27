@@ -24,6 +24,8 @@
 
 package fr.ensim.locvoiture.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -58,6 +60,10 @@ public class Contrat extends BDDBase {
         this.kilometrageDebut = kilometrageDebut;
         this.kilometrageFin = kilometrageFin;
         this.agent = agent;
+    }
+    
+    public static Contrat fromResultSet(ResultSet result, Voiture v, Agent a) throws SQLException {
+        return new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), a, result.getInt("id_contrat"));
     }
 
     public Contrat() {

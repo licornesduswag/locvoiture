@@ -50,4 +50,6 @@ public interface BDDInterface {
     
     public List<Agent> listAgents();
     public boolean checkLogin(String login, String mdp);
+
+    public Client getClient(Voiture v);
 }

@@ -81,4 +81,10 @@ public class FakeBDD implements BDDInterface {
         return true;
     }
 
+    @Override
+    public Client getClient(Voiture v) {
+        System.out.println("GetClient");
+        return null;
+    }
+
 }

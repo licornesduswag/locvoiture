@@ -39,19 +39,21 @@ import java.util.List;
  */
 public class Controller extends AbstractController{
     
-    private BDDInterface bdd = new PostgresBDD();
+    private final BDDInterface bdd = new PostgresBDD();
     
+    @Override
     public boolean checkLogin(String login, String password)
     {
         return bdd.checkLogin(login, password);
     }
     
-    
+    @Override
     public List<Voiture> getVoitures()
     {
         return bdd.listVoitures();
     }
     
+    @Override
     public List<Contrat> getContrats(Voiture v)
     {
         return bdd.listContrats(v);
@@ -64,7 +66,7 @@ public class Controller extends AbstractController{
 
     @Override
     public Client getClient(Voiture v) {
-        return null;
+        return bdd.getClient(v);
     }
 
     @Override

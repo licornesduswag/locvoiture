@@ -77,9 +77,9 @@ public class PostgresBDD implements BDDInterface {
             
             while (result.next()) {
                 
-                Agent a = new Agent(result.getString("login"), result.getString("mdp"), result.getString("nom"), result.getString("prenom"), result.getInt("id_agent"));
-                Voiture v = new Voiture(result.getString("matricule"), result.getString("marque"), result.getInt("kilometrage"), result.getString("couleur"), result.getInt("id_voiture"));
-                Contrat c = new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), a, result.getInt("id_contrat"));
+                Agent a = Agent.fromResultSet(result);
+                Voiture v = Voiture.fromResultSet(result);
+                Contrat c = Contrat.fromResultSet(result, v, a);
                 
                 contrats.add(c);
             }
@@ -199,6 +199,25 @@ public class PostgresBDD implements BDDInterface {
         }
         
         return false;
+    }
+
+    @Override
+    public Client getClient(Voiture v) {
+        try {
+            PreparedStatement p = conn.prepareStatement("SELECT * FROM voiture NATURAL JOIN client WHERE id_voiture = ?");
+            p.setInt(1, v.getId());
+            
+            ResultSet result = p.executeQuery();
+            result.next();
+            
+            return Client.fromResultSet(result, InfoPermis.fromResultSet(result));
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
     }
 
 }
