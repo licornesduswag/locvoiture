@@ -23,28 +23,54 @@
  */
 package fr.ensim.locvoiture.controller;
 
+import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public class DummyController implements AbstractController{
+public class DummyController extends AbstractController{
 
     @Override
     public boolean checkLogin(String login, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public List<Voiture> getVoitures() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Voiture> voitures = new ArrayList<>();
+        
+        return voitures;
     }
 
     @Override
     public List<Contrat> getContrats(Voiture v) {
+        List<Contrat> contrats = new ArrayList<>();
+        
+        return contrats;
+    }
+
+    @Override
+    public List<Client> getClients() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Client getClient(Voiture v) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean addClient(Client c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean addContrat(Contrat c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

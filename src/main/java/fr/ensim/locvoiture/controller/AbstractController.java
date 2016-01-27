@@ -23,20 +23,22 @@
  */
 package fr.ensim.locvoiture.controller;
 
+import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
-import java.util.ArrayList;
+import fr.ensim.locvoiture.observer.AbstractObservable;
 import java.util.List;
 
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public interface AbstractController {
-    public boolean checkLogin(String login, String password);
-    
-    
-    public List<Voiture> getVoitures();
-    
-    public List<Contrat> getContrats(Voiture v);
+public abstract class AbstractController{
+    public abstract boolean checkLogin(String login, String password);
+    public abstract List<Voiture> getVoitures();
+    public abstract List<Contrat> getContrats(Voiture v);
+    public abstract List<Client> getClients();
+    public abstract Client getClient(Voiture v);
+    public abstract boolean addClient(Client c);
+    public abstract boolean addContrat(Contrat c);
 }

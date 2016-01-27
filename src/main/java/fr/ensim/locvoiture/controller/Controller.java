@@ -25,6 +25,7 @@ package fr.ensim.locvoiture.controller;
 
 
 import fr.ensim.locvoiture.model.BDDInterface;
+import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.util.List;
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public class Controller implements AbstractController{
+public class Controller extends AbstractController{
     
     private BDDInterface bdd;
     
@@ -54,5 +55,26 @@ public class Controller implements AbstractController{
     {
         ArrayList<Contrat> liste = new ArrayList<Contrat>();
         return liste;
+    }
+
+    @Override
+    public List<Client> getClients() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    }
+
+    @Override
+    public Client getClient(Voiture v) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean addClient(Client c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean addContrat(Contrat c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

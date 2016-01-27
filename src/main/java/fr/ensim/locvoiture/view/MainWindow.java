@@ -23,7 +23,7 @@
  */
 package fr.ensim.locvoiture.view;
 
-import fr.ensim.locvoiture.controller.Controller;
+import fr.ensim.locvoiture.controller.AbstractController;
 import fr.ensim.locvoiture.model.Voiture;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -39,7 +39,7 @@ public class MainWindow extends MvcView {
     /**
      * Creates new form MainWindow
      */
-    public MainWindow(Controller controller, String login, String mdp) {
+    public MainWindow(AbstractController controller, String login, String mdp) {
         super(controller);
         initComponents();
         this.login = login;
