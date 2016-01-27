@@ -39,11 +39,19 @@ import java.util.List;
 public class Controller extends AbstractController{
     
     private final BDDInterface bdd = new PostgresBDD();
+    private Agent agent = null;
     
     @Override
     public boolean checkLogin(String login, String password)
     {
-        return bdd.checkLogin(login, password);
+        Agent a = bdd.checkLogin(login, password);
+        
+        if (a != null) {
+            agent = a;
+            return true;
+        }
+        
+        return false;
     }
     
     @Override
@@ -89,6 +97,6 @@ public class Controller extends AbstractController{
 
     @Override
     public Agent getConnectedAgent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return agent;
     }
 }

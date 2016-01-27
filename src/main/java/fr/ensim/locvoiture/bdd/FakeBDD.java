@@ -80,9 +80,9 @@ public class FakeBDD implements BDDInterface {
     }
 
     @Override
-    public boolean checkLogin(String login, String mdp) {
+    public Agent checkLogin(String login, String mdp) {
         System.out.println("CheckLogin");
-        return true;
+        return null;
     }
 
     @Override
