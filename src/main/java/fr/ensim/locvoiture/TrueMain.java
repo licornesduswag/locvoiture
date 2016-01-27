@@ -23,6 +23,7 @@
  */
 package fr.ensim.locvoiture;
 
+import fr.ensim.locvoiture.controller.AbstractController;
 import fr.ensim.locvoiture.controller.Controller;
 import fr.ensim.locvoiture.controller.DummyController;
 import fr.ensim.locvoiture.view.LoginWindow;
@@ -38,11 +39,13 @@ public class TrueMain {
     public static void main(String args[])
     {
         System.out.println("test");
-        Controller controller;
+        AbstractController controller;
         if(dummy)
             controller = new DummyController();
+        else
+            controller = new Controller();
         
-        new LoginWindow(new Controller());
+        new LoginWindow(controller);
         System.out.println("fin");
     }
 }

@@ -23,6 +23,7 @@
  */
 package fr.ensim.locvoiture;
 
+import fr.ensim.locvoiture.controller.AbstractController;
 import fr.ensim.locvoiture.controller.Controller;
 import fr.ensim.locvoiture.controller.DummyController;
 import fr.ensim.locvoiture.view.LoginWindow;
@@ -33,7 +34,7 @@ import fr.ensim.locvoiture.view.LoginWindow;
  */
 public class VrongMain {
     
-    public static final boolean dummy = false;
+    public static final boolean dummy = true;
     
     public static void main(String args[])
     {

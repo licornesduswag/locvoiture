@@ -23,6 +23,7 @@
  */
 package fr.ensim.locvoiture.view;
 
+import fr.ensim.locvoiture.controller.AbstractController;
 import fr.ensim.locvoiture.controller.Controller;
 import javax.swing.JFrame;
 
@@ -32,8 +33,8 @@ import javax.swing.JFrame;
  */
 public class MvcView extends JFrame {
     
-    protected Controller controller;
-    public MvcView(Controller controller)
+    protected AbstractController controller;
+    public MvcView(AbstractController controller)
     {
         this.controller = controller;
     }

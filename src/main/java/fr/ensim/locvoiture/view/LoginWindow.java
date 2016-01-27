@@ -23,12 +23,11 @@
  */
 package fr.ensim.locvoiture.view;
 
-import fr.ensim.locvoiture.controller.Controller;
+import fr.ensim.locvoiture.controller.AbstractController;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -47,7 +46,7 @@ public class LoginWindow extends MvcView {
     private JLabel titre = new JLabel("Veuillez vous connecter", JLabel.CENTER);
     
     
-    public LoginWindow(Controller controller)
+    public LoginWindow(AbstractController controller)
     {
         super(controller);
         
