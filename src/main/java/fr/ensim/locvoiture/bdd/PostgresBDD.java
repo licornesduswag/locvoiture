@@ -98,7 +98,7 @@ public class PostgresBDD implements BDDInterface {
     @Override
     public List<Contrat> listContrats(Voiture vo) {
         try {
-            PreparedStatement prep = conn.prepareStatement("SELECT * FROM contrats NATURAL JOIN voitures NATURAL JOIN agents WHERE id_voiture = ?");
+            PreparedStatement prep = conn.prepareStatement("SELECT * FROM contrats NATURAL JOIN voitures NATURAL JOIN agents INNER JOIN clients ON contrats.id_client = clients.id_client WHERE id_voiture = ?");
             prep.setInt(1, vo.getId());
             ResultSet result = prep.executeQuery();
             ArrayList<Contrat> contrats = new ArrayList<>();
@@ -107,7 +107,8 @@ public class PostgresBDD implements BDDInterface {
                 
                 Agent a = Agent.fromResultSet(result);
                 Voiture v = Voiture.fromResultSet(result);
-                Contrat c = Contrat.fromResultSet(result, v, a);
+                Client cli = Client.fromResultSet(result, InfoPermis.fromResultSet(result));
+                Contrat c = Contrat.fromResultSet(result, v, a, cli);
                 
                 contrats.add(c);
             }
@@ -231,10 +232,10 @@ public class PostgresBDD implements BDDInterface {
         return null;
     }
 
-    @Override
-    public Client getClient(Voiture v) {
+    //@Override
+    public Client getClient(Contrat v) {
         try {
-            PreparedStatement p = conn.prepareStatement("SELECT * FROM voiture NATURAL JOIN client WHERE id_voiture = ?");
+            PreparedStatement p = conn.prepareStatement("SELECT * FROM contrat NATURAL JOIN client WHERE id_voiture = ?");
             p.setInt(1, v.getId());
             
             ResultSet result = p.executeQuery();

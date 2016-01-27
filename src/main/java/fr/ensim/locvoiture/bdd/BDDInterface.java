@@ -54,6 +54,4 @@ public interface BDDInterface {
     
     public List<Agent> listAgents();
     public Agent checkLogin(String login, String mdp);
-
-    public Client getClient(Voiture v);
 }
