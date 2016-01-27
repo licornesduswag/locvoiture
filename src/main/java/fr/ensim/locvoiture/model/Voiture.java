@@ -36,24 +36,27 @@ public class Voiture extends BDDBase {
     private String marque;
     private int kilometrage;
     private String couleur;
+    private int prix;
 
-    public Voiture(String matricule, String marque, int kilometrage, String couleur) {
+    public Voiture(String matricule, String marque, int kilometrage, String couleur, int prix) {
         this.matricule = matricule;
         this.marque = marque;
         this.kilometrage = kilometrage;
         this.couleur = couleur;
+        this.prix = prix;
     }
 
-    public Voiture(String matricule, String marque, int kilometrage, String couleur, int id) {
+    public Voiture(String matricule, String marque, int kilometrage, String couleur, int prix, int id) {
         super(id);
         this.matricule = matricule;
         this.marque = marque;
         this.kilometrage = kilometrage;
         this.couleur = couleur;
+        this.prix = prix;
     }    
     
     public static Voiture fromResultSet(ResultSet result) throws SQLException {
-        return new Voiture(result.getString("matricule"), result.getString("marque"), result.getInt("kilometrage"), result.getString("couleur"), result.getInt("id_voiture"));
+        return new Voiture(result.getString("matricule"), result.getString("marque"), result.getInt("kilometrage"), result.getString("couleur"), result.getInt("prix"), result.getInt("id_voiture"));
     }
     
     // Getters & setters
@@ -93,6 +96,16 @@ public class Voiture extends BDDBase {
         this.couleur = couleur;
         notifyObservers();
     }
+
+    public int getPrix() {
+        return prix;
+    }
+
+    public void setPrix(int prix) {
+        this.prix = prix;
+    }
+    
+    
 
     @Override
     public String toString() {

@@ -62,7 +62,7 @@ public class MainWindow extends MvcView {
         while(model.getRowCount() != 0)
             model.removeRow(0);
         for(Voiture v : controller.getVoitures())
-            model.addRow(new Object[]{v, v.getMarque(), v.getKilometrage(), v.getCouleur(), v.getKilometrage()});
+            model.addRow(new Object[]{v, v.getMarque(), v.getKilometrage(), v.getCouleur(), v.getPrix()});
     }
     
     public void fillContrats(Voiture v)
