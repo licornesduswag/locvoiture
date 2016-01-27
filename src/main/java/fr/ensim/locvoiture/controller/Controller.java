@@ -24,6 +24,7 @@
 package fr.ensim.locvoiture.controller;
 
 
+import fr.ensim.locvoiture.model.Agent;
 import fr.ensim.locvoiture.model.BDDInterface;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
@@ -75,6 +76,16 @@ public class Controller extends AbstractController{
 
     @Override
     public boolean addContrat(Contrat c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean modifierContrat(Contrat c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Agent getConnectedAgent() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

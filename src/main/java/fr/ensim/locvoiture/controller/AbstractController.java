@@ -23,10 +23,10 @@
  */
 package fr.ensim.locvoiture.controller;
 
+import fr.ensim.locvoiture.model.Agent;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
-import fr.ensim.locvoiture.observer.AbstractObservable;
 import java.util.List;
 
 /**
@@ -41,4 +41,6 @@ public abstract class AbstractController{
     public abstract Client getClient(Voiture v);
     public abstract boolean addClient(Client c);
     public abstract boolean addContrat(Contrat c);
+    public abstract boolean modifierContrat(Contrat c);
+    public abstract Agent getConnectedAgent();
 }
