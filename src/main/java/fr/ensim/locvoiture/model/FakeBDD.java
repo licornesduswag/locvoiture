@@ -69,4 +69,16 @@ public class FakeBDD implements BDDInterface {
         return new ArrayList<>();
     }
 
+    @Override
+    public List<Agent> listAgents() {
+        System.out.println("ListAgents");
+        return new ArrayList<>();
+    }
+
+    @Override
+    public boolean checkLogin(String login, String mdp) {
+        System.out.println("CheckLogin");
+        return true;
+    }
+
 }

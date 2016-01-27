@@ -30,10 +30,8 @@ import java.util.Date;
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Client extends BDDBase {
+public class Client extends Personne {
     
-    private String nom;
-    private String prenom;
     
     private Date dateNaissance;
     private String lieuNaissance;
@@ -41,41 +39,20 @@ public class Client extends BDDBase {
     private InfoPermis infoPermis;
 
     public Client(String nom, String prenom, Date dateNaissance, String lieuNaissance, InfoPermis infoPermis) {
-        this.nom = nom;
-        this.prenom = prenom;
+        super(nom, prenom);
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.infoPermis = infoPermis;
     }
 
     public Client(String nom, String prenom, Date dateNaissance, String lieuNaissance, InfoPermis infoPermis, int id) {
-        super(id);
-        this.nom = nom;
-        this.prenom = prenom;
+        super(nom, prenom, id);
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.infoPermis = infoPermis;
     }
-    
+
     // Getters & setters
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-        notifyObservers();
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-        notifyObservers();
-    }
 
     public Date getDateNaissance() {
         return dateNaissance;
@@ -106,8 +83,7 @@ public class Client extends BDDBase {
 
     @Override
     public String toString() {
-        return "Client{" + "nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + ", lieuNaissance=" + lieuNaissance + ", infoPermis=" + infoPermis + '}';
+        return "Client{" + "dateNaissance=" + dateNaissance + ", lieuNaissance=" + lieuNaissance + ", infoPermis=" + infoPermis + '}';
     }
-
     
 }

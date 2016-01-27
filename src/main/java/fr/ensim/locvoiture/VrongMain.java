@@ -24,6 +24,7 @@
 package fr.ensim.locvoiture;
 
 import fr.ensim.locvoiture.controller.Controller;
+import fr.ensim.locvoiture.controller.DummyController;
 import fr.ensim.locvoiture.view.LoginWindow;
 
 /**
@@ -31,10 +32,19 @@ import fr.ensim.locvoiture.view.LoginWindow;
  * @author Wojciech Rousseau (Vrong)
  */
 public class VrongMain {
+    
+    public static final boolean dummy = false;
+    
     public static void main(String args[])
     {
         System.out.println("test");
-        new LoginWindow(new Controller());
+        AbstractController controller;
+        if(dummy)
+            controller = new DummyController();
+        else
+            controller = new Controller();
+        
+        new LoginWindow(controller);
         System.out.println("fin");
     }
 }

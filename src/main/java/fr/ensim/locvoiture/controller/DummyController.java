@@ -23,36 +23,29 @@
  */
 package fr.ensim.locvoiture.controller;
 
-
-import fr.ensim.locvoiture.model.BDDInterface;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public class Controller implements AbstractController{
-    
-    private BDDInterface bdd;
-    
-    public boolean checkLogin(String login, String password)
-    {
-        return bdd.checkLogin(login, password);
+public class DummyController implements AbstractController{
+
+    @Override
+    public boolean checkLogin(String login, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Voiture> getVoitures() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Contrat> getContrats(Voiture v) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
-    public List<Voiture> getVoitures()
-    {
-        ArrayList<Voiture> liste = new ArrayList<Voiture>();
-        return liste;
-    }
-    
-    public List<Contrat> getContrats(Voiture v)
-    {
-        ArrayList<Contrat> liste = new ArrayList<Contrat>();
-        return liste;
-    }
 }

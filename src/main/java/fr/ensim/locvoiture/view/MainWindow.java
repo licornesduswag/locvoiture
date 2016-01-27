@@ -24,6 +24,8 @@
 package fr.ensim.locvoiture.view;
 
 import fr.ensim.locvoiture.controller.Controller;
+import fr.ensim.locvoiture.model.Voiture;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**

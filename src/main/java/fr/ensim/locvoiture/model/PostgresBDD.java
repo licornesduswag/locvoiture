@@ -70,13 +70,14 @@ public class PostgresBDD implements BDDInterface {
     @Override
     public List<Contrat> listContrats() {
         try {
-            ResultSet result = stmt.executeQuery("SELECT * FROM contrats NATURAL JOIN voitures");
+            ResultSet result = stmt.executeQuery("SELECT * FROM contrats NATURAL JOIN voitures NATURAL JOIN agents");
             ArrayList<Contrat> contrats = new ArrayList<>();
             
             while (result.next()) {
                 
+                Agent a = new Agent(result.getString("login"), result.getString("mdp"), result.getString("nom"), result.getString("prenom"), result.getInt("id_agent"));
                 Voiture v = new Voiture(result.getString("matricule"), result.getString("marque"), result.getInt("kilometrage"), result.getString("couleur"), result.getInt("id_voiture"));
-                Contrat c = new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), result.getInt("id_contrat"));
+                Contrat c = new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), a, result.getInt("id_contrat"));
                 
                 contrats.add(c);
             }
@@ -157,6 +158,45 @@ public class PostgresBDD implements BDDInterface {
         }
         
         return null;
+    }
+    
+    @Override
+    public List<Agent> listAgents() {
+        try {
+            ResultSet result = stmt.executeQuery("SELECT * FROM agents");
+            
+            List<Agent> agents = new ArrayList<>();
+            
+            while(result.next()) {
+                Agent a = new Agent(result.getString("login"), result.getString("mdp"), result.getString("nom"), result.getString("prenom"), result.getInt("id_agent"));
+                agents.add(a);
+            }
+            
+            return agents;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return null;
+    }
+
+    @Override
+    public boolean checkLogin(String login, String mdp) {
+        try {
+            PreparedStatement p = conn.prepareStatement("SELECT * FROM agents WHERE login = ? AND mdp = ?");
+            
+            p.setString(1, login);
+            p.setString(2, mdp);
+            
+            // true si il y a au moins un resultat, false sinon
+            return p.executeQuery().next();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresBDD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 
 }

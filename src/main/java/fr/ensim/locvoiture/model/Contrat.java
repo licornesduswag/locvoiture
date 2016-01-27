@@ -38,23 +38,27 @@ public class Contrat extends BDDBase {
     
     private int kilometrageDebut;
     private int kilometrageFin;
+    
+    private Agent agent;
 
-    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin) {
+    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin, Agent agent) {
         this.voiture = voiture;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.kilometrageDebut = kilometrageDebut;
         this.kilometrageFin = kilometrageFin;
+        this.agent = agent;
     }
 
-    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin, int id) {
+    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin, Agent agent, int id) {
         super(id);
         this.voiture = voiture;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.kilometrageDebut = kilometrageDebut;
         this.kilometrageFin = kilometrageFin;
-    }    
+        this.agent = agent;
+    }
 
     public Contrat() {
     }
@@ -106,8 +110,18 @@ public class Contrat extends BDDBase {
         notifyObservers();
     }
 
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
     @Override
     public String toString() {
-        return "Contrat{" + "voiture=" + voiture + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", kilometrageDebut=" + kilometrageDebut + ", kilometrageFin=" + kilometrageFin + '}';
+        return "Contrat{" + "voiture=" + voiture + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", kilometrageDebut=" + kilometrageDebut + ", kilometrageFin=" + kilometrageFin + ", agent=" + agent + '}';
     }
+
+    
 }

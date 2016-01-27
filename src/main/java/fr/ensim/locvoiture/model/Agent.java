@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2016 Wojciech Rousseau (Vrong).
+ * Copyright 2016 Romain Porte (MicroJoe) microjoe at mailoo.org.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,38 +21,51 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package fr.ensim.locvoiture.controller;
 
-
-import fr.ensim.locvoiture.model.BDDInterface;
-import fr.ensim.locvoiture.model.Contrat;
-import fr.ensim.locvoiture.model.Voiture;
-import java.util.ArrayList;
-import java.util.List;
+package fr.ensim.locvoiture.model;
 
 /**
  *
- * @author Wojciech Rousseau (Vrong)
+ * @author Romain Porte (MicroJoe) microjoe at mailoo.org
  */
-public class Controller implements AbstractController{
+public class Agent extends Personne {
+    private String login;
+    private String mdp;
+
+    public Agent(String login, String mdp, String nom, String prenom) {
+        super(nom, prenom);
+        this.login = login;
+        this.mdp = mdp;
+    }
+
+    public Agent(String login, String mdp, String nom, String prenom, int id) {
+        super(nom, prenom, id);
+        this.login = login;
+        this.mdp = mdp;
+    }
     
-    private BDDInterface bdd;
-    
-    public boolean checkLogin(String login, String password)
-    {
-        return bdd.checkLogin(login, password);
+    // Getters & setters
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    @Override
+    public String toString() {
+        return "Agent{" + "login=" + login + ", mdp=" + mdp + '}';
     }
     
     
-    public List<Voiture> getVoitures()
-    {
-        ArrayList<Voiture> liste = new ArrayList<Voiture>();
-        return liste;
-    }
-    
-    public List<Contrat> getContrats(Voiture v)
-    {
-        ArrayList<Contrat> liste = new ArrayList<Contrat>();
-        return liste;
-    }
 }

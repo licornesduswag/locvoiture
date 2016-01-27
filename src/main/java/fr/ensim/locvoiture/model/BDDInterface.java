@@ -45,4 +45,9 @@ public interface BDDInterface {
     
     public void saveClient(Client client);
     public List<Client> listClients();
+    
+    // Agent : consultation
+    
+    public List<Agent> listAgents();
+    public boolean checkLogin(String login, String mdp);
 }

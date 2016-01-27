@@ -21,38 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package fr.ensim.locvoiture.controller;
+package fr.ensim.locvoiture;
 
-
-import fr.ensim.locvoiture.model.BDDInterface;
-import fr.ensim.locvoiture.model.Contrat;
-import fr.ensim.locvoiture.model.Voiture;
-import java.util.ArrayList;
-import java.util.List;
+import fr.ensim.locvoiture.controller.Controller;
+import fr.ensim.locvoiture.controller.DummyController;
+import fr.ensim.locvoiture.view.LoginWindow;
 
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public class Controller implements AbstractController{
+public class TrueMain {
     
-    private BDDInterface bdd;
+    public static final boolean dummy = false;
     
-    public boolean checkLogin(String login, String password)
+    public static void main(String args[])
     {
-        return bdd.checkLogin(login, password);
-    }
-    
-    
-    public List<Voiture> getVoitures()
-    {
-        ArrayList<Voiture> liste = new ArrayList<Voiture>();
-        return liste;
-    }
-    
-    public List<Contrat> getContrats(Voiture v)
-    {
-        ArrayList<Contrat> liste = new ArrayList<Contrat>();
-        return liste;
+        System.out.println("test");
+        Controller controller;
+        if(dummy)
+            controller = new DummyController();
+        
+        new LoginWindow(new Controller());
+        System.out.println("fin");
     }
 }
