@@ -73,7 +73,7 @@ public class Controller extends AbstractController{
 
     @Override
     public Client getClient(Contrat c) {
-        return bdd.getClient(c);
+        return c.getClient();
     }
 
     @Override
@@ -102,7 +102,7 @@ public class Controller extends AbstractController{
 
     @Override
     public Agent getAgent(Contrat c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return c.getAgent();
     }
 
     @Override

@@ -60,8 +60,8 @@ public class DummyController extends AbstractController{
     @Override
     public List<Contrat> getContrats(Voiture v) {
         List<Contrat> contrats = new ArrayList<>();
-        contrats.add(new Contrat(v, new Date(2015, 12, 2), new Date(2016, 2, 2), 52, 89, getConnectedAgent()));
-        contrats.add(new Contrat(v, new Date(2014, 06, 24), new Date(2015, 1, 21), 52, 89, getConnectedAgent()));
+        contrats.add(new Contrat(v, new Date(2015, 12, 2), new Date(2016, 2, 2), 52, 89, getConnectedAgent(),  new Client("Valjean", "Jean")));
+        contrats.add(new Contrat(v, new Date(2014, 06, 24), new Date(2015, 1, 21), 52, 89, getConnectedAgent(), new Client("Durand", "Monique")));
         
         return contrats;
     }

@@ -59,6 +59,10 @@ public class Client extends Personne {
         return new Client(result.getString("nom"), result.getString("prenom"), result.getDate("date_naissance"), result.getString("lieu_naissance"), ip, result.getInt("id_client"));
     }
 
+    public Client(String nom, String prenom) {
+        super(nom, prenom);
+    }
+
     // Getters & setters
 
     public Date getDateNaissance() {

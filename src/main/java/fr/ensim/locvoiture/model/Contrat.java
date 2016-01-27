@@ -42,17 +42,19 @@ public class Contrat extends BDDBase {
     private int kilometrageFin;
     
     private Agent agent;
+    private Client client;
 
-    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin, Agent agent) {
+    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin, Agent agent, Client client) {
         this.voiture = voiture;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.kilometrageDebut = kilometrageDebut;
         this.kilometrageFin = kilometrageFin;
         this.agent = agent;
+        this.client = client;
     }
 
-    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin, Agent agent, int id) {
+    public Contrat(Voiture voiture, Date dateDebut, Date dateFin, int kilometrageDebut, int kilometrageFin, Agent agent, Client client, int id) {
         super(id);
         this.voiture = voiture;
         this.dateDebut = dateDebut;
@@ -60,10 +62,11 @@ public class Contrat extends BDDBase {
         this.kilometrageDebut = kilometrageDebut;
         this.kilometrageFin = kilometrageFin;
         this.agent = agent;
+        this.client = client;
     }
     
-    public static Contrat fromResultSet(ResultSet result, Voiture v, Agent a) throws SQLException {
-        return new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), a, result.getInt("id_contrat"));
+    public static Contrat fromResultSet(ResultSet result, Voiture v, Agent a, Client c) throws SQLException {
+        return new Contrat(v, result.getDate("date_debut"), result.getDate("date_fin"), result.getInt("kilometrage_debut"), result.getInt("kilometrage_fin"), a, c, result.getInt("id_contrat"));
     }
 
     public Contrat() {
@@ -123,6 +126,16 @@ public class Contrat extends BDDBase {
     public void setAgent(Agent agent) {
         this.agent = agent;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    
+    
 
     @Override
     public String toString() {
