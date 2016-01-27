@@ -85,6 +85,7 @@ public class Controller extends AbstractController{
     @Override
     public Contrat addContrat(Contrat c) {
         bdd.saveContrat(c);
+        notifyObservers();
         return c;
     }
 
@@ -92,6 +93,7 @@ public class Controller extends AbstractController{
     public boolean modifierContrat(Contrat c) {
         bdd.removeContrat(c);
         bdd.saveContrat(c);
+        notifyObservers();
         return true;
     }
 

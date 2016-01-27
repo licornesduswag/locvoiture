@@ -27,13 +27,14 @@ import fr.ensim.locvoiture.model.Agent;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
+import fr.ensim.locvoiture.observer.AbstractObservable;
 import java.util.List;
 
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public abstract class AbstractController{
+public abstract class AbstractController extends AbstractObservable{
     public abstract boolean checkLogin(String login, String password);
     public abstract List<Voiture> getVoitures();
     public abstract List<Contrat> getContrats(Voiture v);

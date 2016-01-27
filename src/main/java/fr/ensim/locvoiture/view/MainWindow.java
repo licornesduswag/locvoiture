@@ -27,6 +27,7 @@ import fr.ensim.locvoiture.controller.AbstractController;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,6 +37,7 @@ import javax.swing.table.DefaultTableModel;
 public class MainWindow extends MvcView {
 
     private String login, mdp;
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     
     /**
      * Creates new form MainWindow
@@ -63,6 +65,13 @@ public class MainWindow extends MvcView {
             model.removeRow(0);
         for(Voiture v : controller.getVoitures())
             model.addRow(new Object[]{v, v.getMarque(), v.getKilometrage(), v.getCouleur(), v.getKilometrage()});
+    
+        fillContrats(null);
+    }
+    
+    @Override
+    public void update() {
+        initVoitureTable();
     }
     
     public void fillContrats(Voiture v)
@@ -71,10 +80,14 @@ public class MainWindow extends MvcView {
         
         while(model.getRowCount() != 0)
             model.removeRow(0);
+        
+        if(v == null)
+            return;
+        
         for(Contrat c : controller.getContrats(v))
         {
             Client client = controller.getClient(c);
-            model.addRow(new Object[]{c, client, c.getDateDebut(), c.getDateFin(), c.getKilometrageFin() - c.getKilometrageDebut(), controller.getAgent(c)});
+            model.addRow(new Object[]{c, client, formatter.format(c.getDateDebut()), formatter.format(c.getDateFin()), c.getKilometrageFin() - c.getKilometrageDebut(), controller.getAgent(c)});
         }
         
     }
@@ -92,10 +105,10 @@ public class MainWindow extends MvcView {
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        nouveau = new javax.swing.JButton();
+        modifier = new javax.swing.JButton();
+        annuler = new javax.swing.JButton();
+        facturer = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -126,27 +139,37 @@ public class MainWindow extends MvcView {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton2.setText("Nouveau Contrat");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        nouveau.setText("Nouveau Contrat");
+        nouveau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                nouveauActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
+        jPanel1.add(nouveau);
 
-        jButton4.setText("Modifier Contrat");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        modifier.setText("Modifier Contrat");
+        modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                modifierActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
+        jPanel1.add(modifier);
 
-        jButton3.setText("Annuler contrat");
-        jPanel1.add(jButton3);
+        annuler.setText("Annuler contrat");
+        annuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                annulerActionPerformed(evt);
+            }
+        });
+        jPanel1.add(annuler);
 
-        jButton5.setText("Facturer");
-        jPanel1.add(jButton5);
+        facturer.setText("Facturer");
+        facturer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facturerActionPerformed(evt);
+            }
+        });
+        jPanel1.add(facturer);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
         getContentPane().add(filler1, java.awt.BorderLayout.LINE_START);
@@ -218,6 +241,7 @@ public class MainWindow extends MvcView {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.setMaximumSize(new java.awt.Dimension(2147483647, 4895456));
         jScrollPane2.setViewportView(jTable2);
 
         jPanel6.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -228,33 +252,47 @@ public class MainWindow extends MvcView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierActionPerformed
+        if(jTable1.getSelectedRow() == -1 || jTable2.getSelectedRow() == -1)
+            return;
+        
+        Voiture voiture = (Voiture)jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0);
+        Contrat contrat = (Contrat)jTable2.getModel().getValueAt(jTable2.getSelectedRow(), 0);
+        new ContratWindow(controller, contrat, voiture);
+        
+    }//GEN-LAST:event_modifierActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void nouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nouveauActionPerformed
+        if(jTable1.getSelectedRow() == -1 )
+            return;
+        
+        Voiture voiture = (Voiture)jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0);
+        new ContratWindow(controller, null, voiture);    }//GEN-LAST:event_nouveauActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         
         Voiture v = (Voiture)jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0);
         fillContrats(v);
-        
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annulerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_annulerActionPerformed
+
+    private void facturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_facturerActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton annuler;
+    private javax.swing.JButton facturer;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -265,5 +303,7 @@ public class MainWindow extends MvcView {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton modifier;
+    private javax.swing.JButton nouveau;
     // End of variables declaration//GEN-END:variables
 }

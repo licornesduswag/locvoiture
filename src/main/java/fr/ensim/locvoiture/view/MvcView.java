@@ -24,19 +24,39 @@
 package fr.ensim.locvoiture.view;
 
 import fr.ensim.locvoiture.controller.AbstractController;
-import fr.ensim.locvoiture.controller.Controller;
+import fr.ensim.locvoiture.observer.Observer;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Wojciech Rousseau (Vrong)
  */
-public class MvcView extends JFrame {
+public class MvcView extends JFrame implements Observer{
     
     protected AbstractController controller;
     public MvcView(AbstractController controller)
     {
         this.controller = controller;
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        /*this.addWindowListener(new WindowAdapter() {
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if(JOptionPane.showConfirmDialog(MvcView.this, "Fermer cette fenêtre ?") == JOptionPane.OK_OPTION){
+                    MvcView.this.setVisible(false);
+                    MvcView.this.dispose();
+                }
+            }
+        });*/
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

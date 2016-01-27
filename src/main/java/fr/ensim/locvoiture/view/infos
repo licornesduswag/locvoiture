@@ -1,0 +1,22 @@
+contrat
+
+loueur
+voiture
+debutLocation
+finLocation
+kilomtrageDepart
+kilometrageArrivee
+
+client
+
+nom
+prenom
+naissance
+lieu naissance
+
+InfoPermis
+
+numero
+date
+lieu delivrance
+ville delivrance

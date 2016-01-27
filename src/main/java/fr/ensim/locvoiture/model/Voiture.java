@@ -96,6 +96,15 @@ public class Voiture extends BDDBase {
 
     @Override
     public String toString() {
-        return "Voiture{" + "matricule=" + matricule + ", marque=" + marque + ", kilometrage=" + kilometrage + ", couleur=" + couleur + '}';
+        return this.getMatricule();
+    }
+    
+    @Override
+    public boolean equals(Object o)
+    {
+        if(o instanceof Voiture)
+            if(((Voiture)o).getId() == this.getId())
+                return true;
+        return false;
     }
 }

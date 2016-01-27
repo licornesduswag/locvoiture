@@ -86,7 +86,7 @@ public class LoginWindow extends MvcView {
                 connexion.setBackground(Color.GRAY);
                 if(controller.checkLogin(login.getText(), password.getText()))
                 {
-                    LoginWindow.this.setVisible(false);
+                    //LoginWindow.this.setVisible(false);
                     
                     new MainWindow(controller, login.getText(), password.getText());
                     

@@ -93,4 +93,13 @@ public class Client extends Personne {
         return super.toString();
     }
     
+    @Override
+    public boolean equals(Object o)
+    {
+        if(o instanceof Client)
+            if(((Client)o).getId() == this.getId())
+                return true;
+        return false;
+    }
+    
 }

@@ -49,10 +49,10 @@ public class DummyController extends AbstractController{
     @Override
     public List<Voiture> getVoitures() {
         List<Voiture> voitures = new ArrayList<>();
-        voitures.add(new Voiture("SUPER5", "Renault", 18555, "ROUGE"));
-        voitures.add(new Voiture("mat12", "JAVA", 8945, "VERTE"));
-        voitures.add(new Voiture("mat851", "TRUC", 3657, "MARRON"));
-        voitures.add(new Voiture("SUPERMAN", "PONEY", 159, "JAUNE FLUO"));
+        voitures.add(new Voiture("SUPER5", "Renault", 18555, "ROUGE", 1));
+        voitures.add(new Voiture("mat12", "JAVA", 8945, "VERTE", 2));
+        voitures.add(new Voiture("mat851", "TRUC", 3657, "MARRON", 3));
+        voitures.add(new Voiture("SUPERMAN", "PONEY", 159, "JAUNE FLUO", 4));
         
         return voitures;
     }
@@ -60,8 +60,8 @@ public class DummyController extends AbstractController{
     @Override
     public List<Contrat> getContrats(Voiture v) {
         List<Contrat> contrats = new ArrayList<>();
-        contrats.add(new Contrat(v, new Date(2015, 12, 2), new Date(2016, 2, 2), 52, 89, getConnectedAgent()));
-        contrats.add(new Contrat(v, new Date(2014, 06, 24), new Date(2015, 1, 21), 52, 89, getConnectedAgent()));
+        contrats.add(new Contrat(v, new Date(2015, 12, 2), new Date(2016, 2, 2), 52, 89, getConnectedAgent(), 1));
+        contrats.add(new Contrat(v, new Date(2014, 06, 24), new Date(2015, 1, 21), 52, 89, getConnectedAgent(), 2));
         
         return contrats;
     }
@@ -69,15 +69,15 @@ public class DummyController extends AbstractController{
     @Override
     public List<Client> getClients() {
         List<Client> clients = new ArrayList<>();
-        clients.add(new Client("Séchan", "Renaud", new Date(1952, 3, 11), "Paris", new InfoPermis(547, new Date(1967, 11, 24), "PARIS", "PARIS")));
-        clients.add(new Client("Poole", "Christopher", new Date(1988, 5, 15), "moot", new InfoPermis(854, new Date(1994, 8, 2), "moot", "moot"))); 
+        clients.add(new Client("Séchan", "Renaud", new Date(1952, 3, 11), "Paris", new InfoPermis(547, new Date(1967, 11, 24), "PARIS", "PARIS"), 1));
+        clients.add(new Client("Poole", "Christopher", new Date(1988, 5, 15), "moot", new InfoPermis(854, new Date(1994, 8, 2), "moot", "moot"), 2)); 
         
         return clients;
     }
 
     @Override
     public Client getClient(Contrat c) {
-        return new Client("Séchan", "Renaud", new Date(1952, 3, 11), "Paris", new InfoPermis(547, new Date(1967, 11, 24), "PARIS", "PARIS"));
+        return new Client("Séchan", "Renaud", new Date(1952, 3, 11), "Paris", new InfoPermis(547, new Date(1967, 11, 24), "PARIS", "PARIS"), 1);
     }
 
     @Override
@@ -89,11 +89,13 @@ public class DummyController extends AbstractController{
     @Override
     public Contrat addContrat(Contrat c) {
         c.setId(85);
+        notifyObservers();
         return c;
     }
 
     @Override
     public boolean modifierContrat(Contrat c) {
+        notifyObservers();
         return true;
     }
 
