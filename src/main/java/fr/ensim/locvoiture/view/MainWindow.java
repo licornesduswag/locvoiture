@@ -56,7 +56,11 @@ public class MainWindow extends MvcView {
 
     public void initVoitureTable()
     {
-        List<Voiture> voitures = controller.getVoitures();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        while(model.getRowCount() != 0)
+            model.removeRow(0);
+        for(Voiture v : controller.getVoitures())
+            model.addRow(new Object[]{v.getMatricule(), v.getMarque(), v.getKilometrage(), v.getCouleur(), v.getKilometrage()});
     }
     
     
