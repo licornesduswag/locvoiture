@@ -81,13 +81,15 @@ public class DummyController extends AbstractController{
     }
 
     @Override
-    public boolean addClient(Client c) {
-        return true;
+    public Client addClient(Client c) {
+        c.setId(956);
+        return c;
     }
 
     @Override
-    public boolean addContrat(Contrat c) {
-        return true;
+    public Contrat addContrat(Contrat c) {
+        c.setId(85);
+        return c;
     }
 
     @Override
@@ -98,6 +100,16 @@ public class DummyController extends AbstractController{
     @Override
     public Agent getConnectedAgent() {
         return agent;
+    }
+
+    @Override
+    public Agent getAgent(Contrat c) {
+        return agent;
+    }
+
+    @Override
+    public boolean modifierClient(Client c) {
+        return true;
     }
     
 }

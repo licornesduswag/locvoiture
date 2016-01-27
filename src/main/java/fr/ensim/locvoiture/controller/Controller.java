@@ -77,15 +77,15 @@ public class Controller extends AbstractController{
     }
 
     @Override
-    public boolean addClient(Client c) {
+    public Client addClient(Client c) {
         bdd.saveClient(c);
-        return true;
+        return c;
     }
 
     @Override
-    public boolean addContrat(Contrat c) {
+    public Contrat addContrat(Contrat c) {
         bdd.saveContrat(c);
-        return true;
+        return c;
     }
 
     @Override
@@ -98,5 +98,15 @@ public class Controller extends AbstractController{
     @Override
     public Agent getConnectedAgent() {
         return agent;
+    }
+
+    @Override
+    public Agent getAgent(Contrat c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean modifierClient(Client c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
