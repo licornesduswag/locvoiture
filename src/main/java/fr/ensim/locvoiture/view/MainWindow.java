@@ -24,8 +24,8 @@
 package fr.ensim.locvoiture.view;
 
 import fr.ensim.locvoiture.controller.AbstractController;
+import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
-import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -61,7 +61,21 @@ public class MainWindow extends MvcView {
         while(model.getRowCount() != 0)
             model.removeRow(0);
         for(Voiture v : controller.getVoitures())
-            model.addRow(new Object[]{v.getMatricule(), v.getMarque(), v.getKilometrage(), v.getCouleur(), v.getKilometrage()});
+            model.addRow(new Object[]{v, v.getMarque(), v.getKilometrage(), v.getCouleur(), v.getKilometrage()});
+    }
+    
+    public void initVoitureTable(Voiture v)
+    {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        
+        while(model.getRowCount() != 0)
+            model.removeRow(0);
+        for(Contrat c : controller.getContrats(v))
+        {
+            Client c = controller.getClient(c);
+            model.addRow(new Object[]{c, c.getDateDebut(), c.getDateFin(), c.getKilometrageFin() - c.getKilometrageDebut()});
+        }
+        
     }
     
     
@@ -167,6 +181,11 @@ public class MainWindow extends MvcView {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -218,6 +237,11 @@ public class MainWindow extends MvcView {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     
 

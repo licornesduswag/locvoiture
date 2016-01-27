@@ -38,7 +38,7 @@ public abstract class AbstractController{
     public abstract List<Voiture> getVoitures();
     public abstract List<Contrat> getContrats(Voiture v);
     public abstract List<Client> getClients();
-    public abstract Client getClient(Voiture v);
+    public abstract Client getClient(Contrat c);
     public abstract boolean addClient(Client c);
     public abstract boolean addContrat(Contrat c);
     public abstract boolean modifierContrat(Contrat c);

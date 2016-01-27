@@ -65,8 +65,8 @@ public class Controller extends AbstractController{
     }
 
     @Override
-    public Client getClient(Voiture v) {
-        return bdd.getClient(v);
+    public Client getClient(Contrat c) {
+        return bdd.getClient(c);
     }
 
     @Override
