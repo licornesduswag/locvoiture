@@ -24,6 +24,7 @@
 package fr.ensim.locvoiture.view;
 
 import fr.ensim.locvoiture.controller.AbstractController;
+import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
 import javax.swing.table.DefaultTableModel;
@@ -64,7 +65,7 @@ public class MainWindow extends MvcView {
             model.addRow(new Object[]{v, v.getMarque(), v.getKilometrage(), v.getCouleur(), v.getKilometrage()});
     }
     
-    public void initVoitureTable(Voiture v)
+    public void fillContrats(Voiture v)
     {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         
@@ -72,8 +73,8 @@ public class MainWindow extends MvcView {
             model.removeRow(0);
         for(Contrat c : controller.getContrats(v))
         {
-            Client c = controller.getClient(c);
-            model.addRow(new Object[]{c, c.getDateDebut(), c.getDateFin(), c.getKilometrageFin() - c.getKilometrageDebut()});
+            Client client = controller.getClient(c);
+            model.addRow(new Object[]{c, client, c.getDateDebut(), c.getDateFin(), c.getKilometrageFin() - c.getKilometrageDebut(), controller.getAgent(c)});
         }
         
     }
@@ -200,17 +201,17 @@ public class MainWindow extends MvcView {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Numéro", "Début location", "Fin location", "Kilométrage", "Client"
+                "Numéro", "Client", "Début location", "Fin location", "Kilométrage", "Agent"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -240,6 +241,8 @@ public class MainWindow extends MvcView {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         
+        Voiture v = (Voiture)jTable1.getModel().getValueAt(jTable1.getSelectedRow(), 0);
+        fillContrats(v);
         
     }//GEN-LAST:event_jTable1MouseClicked
 
