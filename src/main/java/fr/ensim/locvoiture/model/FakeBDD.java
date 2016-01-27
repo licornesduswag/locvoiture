@@ -44,7 +44,7 @@ public class FakeBDD implements BDDInterface {
     }
 
     @Override
-    public List<Contrat> listContrats() {
+    public List<Contrat> listContrats(Voiture v) {
         System.out.println("ListContrats");
         
         return new ArrayList<>();
@@ -79,6 +79,12 @@ public class FakeBDD implements BDDInterface {
     public boolean checkLogin(String login, String mdp) {
         System.out.println("CheckLogin");
         return true;
+    }
+
+    @Override
+    public Client getClient(Voiture v) {
+        System.out.println("GetClient");
+        return null;
     }
 
 }

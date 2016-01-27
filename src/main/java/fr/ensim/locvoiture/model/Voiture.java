@@ -24,6 +24,9 @@
 
 package fr.ensim.locvoiture.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
@@ -48,6 +51,10 @@ public class Voiture extends BDDBase {
         this.kilometrage = kilometrage;
         this.couleur = couleur;
     }    
+    
+    public static Voiture fromResultSet(ResultSet result) throws SQLException {
+        return new Voiture(result.getString("matricule"), result.getString("marque"), result.getInt("kilometrage"), result.getString("couleur"), result.getInt("id_voiture"));
+    }
     
     // Getters & setters
 

@@ -24,6 +24,9 @@
 
 package fr.ensim.locvoiture.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Romain Porte (MicroJoe) microjoe at mailoo.org
@@ -42,6 +45,10 @@ public class Agent extends Personne {
         super(nom, prenom, id);
         this.login = login;
         this.mdp = mdp;
+    }
+    
+    public static Agent fromResultSet(ResultSet result) throws SQLException {
+        return new Agent(result.getString("login"), result.getString("mdp"), result.getString("nom"), result.getString("prenom"), result.getInt("id_agent"));
     }
     
     // Getters & setters

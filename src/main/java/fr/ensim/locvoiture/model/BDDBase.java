@@ -25,6 +25,8 @@
 package fr.ensim.locvoiture.model;
 
 import fr.ensim.locvoiture.observer.AbstractObservable;
+import java.sql.ResultSet;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  *
