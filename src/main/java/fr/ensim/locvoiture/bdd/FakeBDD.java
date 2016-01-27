@@ -22,8 +22,12 @@
  * THE SOFTWARE.
  */
 
-package fr.ensim.locvoiture.model;
+package fr.ensim.locvoiture.bdd;
 
+import fr.ensim.locvoiture.model.Agent;
+import fr.ensim.locvoiture.model.Client;
+import fr.ensim.locvoiture.model.Contrat;
+import fr.ensim.locvoiture.model.Voiture;
 import java.util.ArrayList;
 import java.util.List;
 
