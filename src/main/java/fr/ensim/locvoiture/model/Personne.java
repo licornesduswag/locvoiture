@@ -62,6 +62,10 @@ public class Personne extends BDDBase {
         this.prenom = prenom;
     }
     
+    @Override
+    public String toString() {
+        return getPrenom()+ " " + getNom();
+    }
     
     
 }

@@ -76,7 +76,7 @@ public class DummyController extends AbstractController{
     }
 
     @Override
-    public Client getClient(Voiture v) {
+    public Client getClient(Contrat c) {
         return new Client("Séchan", "Renaud", new Date(1952, 3, 11), "Paris", new InfoPermis(547, new Date(1967, 11, 24), "PARIS", "PARIS"));
     }
 

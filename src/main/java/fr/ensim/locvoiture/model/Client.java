@@ -90,7 +90,7 @@ public class Client extends Personne {
 
     @Override
     public String toString() {
-        return "Client{" + "dateNaissance=" + dateNaissance + ", lieuNaissance=" + lieuNaissance + ", infoPermis=" + infoPermis + '}';
+        return super.toString();
     }
     
 }

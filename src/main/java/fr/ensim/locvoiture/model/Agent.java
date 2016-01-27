@@ -71,7 +71,7 @@ public class Agent extends Personne {
 
     @Override
     public String toString() {
-        return "Agent{" + "login=" + login + ", mdp=" + mdp + '}';
+        return super.toString();
     }
     
     
