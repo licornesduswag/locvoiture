@@ -35,7 +35,7 @@ public interface BDDInterface {
     
     public void saveContrat(Contrat contrat);
     public void removeContrat(Contrat contrat);
-    public List<Contrat> listContrats();
+    public List<Contrat> listContrats(Voiture v);
     
     // Voitures : consultation
     

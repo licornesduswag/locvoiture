@@ -68,9 +68,11 @@ public class PostgresBDD implements BDDInterface {
     }
 
     @Override
-    public List<Contrat> listContrats() {
+    public List<Contrat> listContrats(Voiture vo) {
         try {
-            ResultSet result = stmt.executeQuery("SELECT * FROM contrats NATURAL JOIN voitures NATURAL JOIN agents");
+            PreparedStatement prep = conn.prepareStatement("SELECT * FROM contrats NATURAL JOIN voitures NATURAL JOIN agents WHERE id_voiture = ?");
+            prep.setInt(1, vo.getId());
+            ResultSet result = prep.executeQuery();
             ArrayList<Contrat> contrats = new ArrayList<>();
             
             while (result.next()) {
@@ -99,7 +101,7 @@ public class PostgresBDD implements BDDInterface {
             List<Voiture> voitures = new ArrayList<>();
             
             while (result.next()) {
-                Voiture v = new Voiture(result.getString("matricule"), result.getString("marque"), result.getInt("kilometrage"), result.getString("couleur"), result.getInt("id_voiture"));
+                Voiture v = Voiture.fromResultSet(result);
                 voitures.add(v);
             }
             
@@ -145,8 +147,8 @@ public class PostgresBDD implements BDDInterface {
             List<Client> clients = new ArrayList();
             
             while(result.next()) {
-                InfoPermis ip = new InfoPermis(result.getInt("permis_numero"), result.getDate("permis_date_delivrance"), result.getString("permis_lieu_delivrance"), result.getString("permis_ville_delivrance"));
-                Client c = new Client(result.getString("nom"), result.getString("prenom"), result.getDate("date_naissance"), result.getString("lieu_naissance"), ip, result.getInt("id_client"));
+                InfoPermis ip = InfoPermis.fromResultSet(result);
+                Client c = Client.fromResultSet(result, ip);
                 
                 clients.add(c);
             }
@@ -168,7 +170,7 @@ public class PostgresBDD implements BDDInterface {
             List<Agent> agents = new ArrayList<>();
             
             while(result.next()) {
-                Agent a = new Agent(result.getString("login"), result.getString("mdp"), result.getString("nom"), result.getString("prenom"), result.getInt("id_agent"));
+                Agent a = Agent.fromResultSet(result);
                 agents.add(a);
             }
             

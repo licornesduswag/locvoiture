@@ -24,6 +24,8 @@
 
 package fr.ensim.locvoiture.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -42,6 +44,10 @@ public class InfoPermis extends BDDBase {
         this.dateDelivrance = dateDelivrance;
         this.lieuDelivrance = lieuDelivrance;
         this.villeDelivrance = villeDelivrance;
+    }
+    
+    public static InfoPermis fromResultSet(ResultSet result) throws SQLException {
+        return new InfoPermis(result.getInt("permis_numero"), result.getDate("permis_date_delivrance"), result.getString("permis_lieu_delivrance"), result.getString("permis_ville_delivrance"));
     }
     
     // Getters & setters

@@ -24,6 +24,8 @@
 
 package fr.ensim.locvoiture.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 /**
@@ -50,6 +52,11 @@ public class Client extends Personne {
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.infoPermis = infoPermis;
+    }
+    
+
+    public static Client fromResultSet(ResultSet result, InfoPermis ip) throws SQLException {
+        return new Client(result.getString("nom"), result.getString("prenom"), result.getDate("date_naissance"), result.getString("lieu_naissance"), ip, result.getInt("id_client"));
     }
 
     // Getters & setters

@@ -28,6 +28,7 @@ import fr.ensim.locvoiture.model.Agent;
 import fr.ensim.locvoiture.model.BDDInterface;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
+import fr.ensim.locvoiture.model.PostgresBDD;
 import fr.ensim.locvoiture.model.Voiture;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ import java.util.List;
  */
 public class Controller extends AbstractController{
     
-    private BDDInterface bdd;
+    private BDDInterface bdd = new PostgresBDD();
     
     public boolean checkLogin(String login, String password)
     {
@@ -48,30 +49,27 @@ public class Controller extends AbstractController{
     
     public List<Voiture> getVoitures()
     {
-        ArrayList<Voiture> liste = new ArrayList<Voiture>();
-        return liste;
+        return bdd.listVoitures();
     }
     
     public List<Contrat> getContrats(Voiture v)
     {
-        ArrayList<Contrat> liste = new ArrayList<Contrat>();
-        return liste;
+        return bdd.listContrats(v);
     }
 
     @Override
     public List<Client> getClients() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
+        return bdd.listClients();
     }
 
     @Override
     public Client getClient(Voiture v) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override
     public boolean addClient(Client c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override

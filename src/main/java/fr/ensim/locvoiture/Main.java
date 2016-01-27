@@ -45,7 +45,7 @@ public class Main {
         
         System.out.println("Liste des contrats...");
         
-        List<Contrat> list = bdd.listContrats();
+        List<Contrat> list = bdd.listContrats(null);
         
         for (Contrat c : list) {
             System.out.println(c.getId());

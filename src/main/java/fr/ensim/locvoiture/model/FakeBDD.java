@@ -44,7 +44,7 @@ public class FakeBDD implements BDDInterface {
     }
 
     @Override
-    public List<Contrat> listContrats() {
+    public List<Contrat> listContrats(Voiture v) {
         System.out.println("ListContrats");
         
         return new ArrayList<>();
