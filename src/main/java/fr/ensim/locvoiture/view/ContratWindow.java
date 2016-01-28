@@ -27,12 +27,9 @@ import fr.ensim.locvoiture.controller.AbstractController;
 import fr.ensim.locvoiture.model.Client;
 import fr.ensim.locvoiture.model.Contrat;
 import fr.ensim.locvoiture.model.Voiture;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -55,26 +52,22 @@ public class ContratWindow extends MvcView {
         super(controller);
         initComponents();
         this.contrat = contrat;
-        clients = controller.getClients();
         voitures = controller.getVoitures();
         
-        comboClient.removeAllItems();
         comboVoitures.removeAllItems();
-        comboClient.addItem(NOUVEAU_CLIENT_ITEM);
         for(Voiture v : voitures)
             comboVoitures.addItem(v.toString());
         
-        for(Client c : clients)
-            comboClient.addItem(c.toString());
         
-        comboClient.setSelectedIndex(0);
         
+        updateClients(null);
         
         comboVoitures.setSelectedIndex(0);
         int tmp = voitures.indexOf(voiture);
         comboVoitures.setSelectedIndex(tmp);
         
         
+        debutLocation.setText(formatter.format(new Date()));
         finLocation.setText(formatter.format(new Date()));
         
         if(contrat != null)
@@ -89,12 +82,27 @@ public class ContratWindow extends MvcView {
             departKm.setText(contrat.getKilometrageDebut() + "");
             arriveeKm.setText(contrat.getKilometrageFin() + "");
             
-            Client c = controller.getClient(contrat);
-            tmp = clients.indexOf(c);
-            comboClient.setSelectedIndex(tmp+1);
+            updateClients(controller.getClient(contrat));
             
         }
         this.setVisible(true);
+    }
+    
+    public void updateClients(Client client)
+    {
+        clients = controller.getClients();
+        comboClient.removeAllItems();
+        comboClient.addItem(NOUVEAU_CLIENT_ITEM);
+        
+        for(Client c : clients)
+            comboClient.addItem(c.toString());
+        
+        comboClient.setSelectedIndex(0);
+        if(client != null)
+        {
+            int tmp = clients.indexOf(client);
+            comboClient.setSelectedIndex(tmp+1);
+        }
     }
 
     /**
@@ -211,9 +219,9 @@ public class ContratWindow extends MvcView {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //TODO add client if needed
+       
         
         Contrat c;
         if(contrat != null)
@@ -253,18 +261,23 @@ public class ContratWindow extends MvcView {
             javax.swing.JOptionPane.showMessageDialog(null,"Kilométrage de départ incorrect"); 
         }
         
-        if(contrat == null)
-            controller.addContrat(c);
+        if(comboClient.getSelectedIndex() == 0)
+        {
+            new ClientWindow(controller, c, contrat == null);
+        }
         else
-            controller.modifierContrat(c);
-        
+        {
+           Client cl = clients.get(comboClient.getSelectedIndex() -1 );
+           c.setClient(cl);
+                   
+           if(contrat == null)
+               controller.addContrat(c);
+           else
+               controller.modifierContrat(c);
+        }
         
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void comboVoituresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboVoituresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboVoituresActionPerformed
 
     private void departKmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departKmActionPerformed
         // TODO add your handling code here:
@@ -281,6 +294,10 @@ public class ContratWindow extends MvcView {
     private void numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numeroActionPerformed
+
+    private void comboVoituresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboVoituresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboVoituresActionPerformed
 
     
 
