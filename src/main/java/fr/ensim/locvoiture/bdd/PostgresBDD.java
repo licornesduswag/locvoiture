@@ -65,15 +65,16 @@ public class PostgresBDD implements BDDInterface {
     @Override
     public void saveContrat(Contrat contrat) {
         try {
-            PreparedStatement prep = conn.prepareStatement("INSERT INTO contrats VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement prep = conn.prepareStatement("INSERT INTO contrats VALUES (DEFAULT,?,?,?,?,?,?,?)");
             
-            prep.setInt(1, contrat.getId());
-            prep.setInt(2, contrat.getVoiture().getId());
-            prep.setDate(3, new java.sql.Date(contrat.getDateDebut().getTime()));
-            prep.setDate(4, new java.sql.Date(contrat.getDateFin().getTime()));
-            prep.setInt(5, contrat.getKilometrageDebut());
-            prep.setInt(6, contrat.getKilometrageFin());
-            prep.setInt(7, contrat.getAgent().getId());
+            //prep.setInt(1, contrat.getId());
+            prep.setInt(1, contrat.getVoiture().getId());
+            prep.setDate(2, new java.sql.Date(contrat.getDateDebut().getTime()));
+            prep.setDate(3, new java.sql.Date(contrat.getDateFin().getTime()));
+            prep.setInt(4, contrat.getKilometrageDebut());
+            prep.setInt(5, contrat.getKilometrageFin());
+            prep.setInt(6, contrat.getAgent().getId());
+            prep.setInt(7, contrat.getClient().getId());
             
             if (prep.executeUpdate() != 1) {
                 System.out.println("L'insertion a échoué");
@@ -146,18 +147,18 @@ public class PostgresBDD implements BDDInterface {
     @Override
     public void saveClient(Client client) {
         try {
-            String insert = "INSERT INTO clients VALUES (?,?,?,?,?,?,?,?,?)";
+            String insert = "INSERT INTO clients VALUES (DEFAULT,?,?,?,?,?,?,?,?)";
             
             PreparedStatement ps = conn.prepareStatement(insert);
-            ps.setInt(1, 42); // id
-            ps.setString(2, client.getNom());
-            ps.setString(3, client.getPrenom());
-            ps.setDate(4, new java.sql.Date(client.getDateNaissance().getTime()));
-            ps.setString(5, client.getLieuNaissance());
-            ps.setInt(6, client.getInfoPermis().getNumero());
-            ps.setDate(7, new java.sql.Date(client.getInfoPermis().getDateDelivrance().getTime()));
-            ps.setString(8, client.getInfoPermis().getLieuDelivrance());
-            ps.setString(9, client.getInfoPermis().getVilleDelivrance());
+            //ps.setInt(1, 42); // id
+            ps.setString(1, client.getNom());
+            ps.setString(2, client.getPrenom());
+            ps.setDate(3, new java.sql.Date(client.getDateNaissance().getTime()));
+            ps.setString(4, client.getLieuNaissance());
+            ps.setInt(5, client.getInfoPermis().getNumero());
+            ps.setDate(6, new java.sql.Date(client.getInfoPermis().getDateDelivrance().getTime()));
+            ps.setString(7, client.getInfoPermis().getLieuDelivrance());
+            ps.setString(8, client.getInfoPermis().getVilleDelivrance());
             
             if (ps.executeUpdate() != 1) {
                 System.out.println("L'insertion a échoué");

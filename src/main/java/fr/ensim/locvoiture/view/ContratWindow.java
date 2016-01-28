@@ -273,7 +273,7 @@ public class ContratWindow extends MvcView {
         }
         else
         {
-           Client cl = clients.get(comboClient.getSelectedIndex() -1 );
+           Client cl = clients.get(comboClient.getSelectedIndex() - 1);
            c.setClient(cl);
                    
            if(contrat == null)
