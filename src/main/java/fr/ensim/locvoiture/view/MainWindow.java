@@ -139,6 +139,7 @@ public class MainWindow extends MvcView {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        nouveau.setBackground(new java.awt.Color(0, 255, 0));
         nouveau.setText("Nouveau Contrat");
         nouveau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +148,7 @@ public class MainWindow extends MvcView {
         });
         jPanel1.add(nouveau);
 
+        modifier.setBackground(new java.awt.Color(255, 255, 0));
         modifier.setText("Modifier Contrat");
         modifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +157,7 @@ public class MainWindow extends MvcView {
         });
         jPanel1.add(modifier);
 
+        annuler.setBackground(new java.awt.Color(255, 51, 0));
         annuler.setText("Annuler contrat");
         annuler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +282,11 @@ public class MainWindow extends MvcView {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_annulerActionPerformed
-        // TODO add your handling code here:
+        if(jTable2.getSelectedRow() == -1 )
+            return;
+        
+        Contrat contrat = (Contrat)jTable2.getModel().getValueAt(jTable2.getSelectedRow(), 0);
+        controller.annulerContrat(contrat);
     }//GEN-LAST:event_annulerActionPerformed
 
     private void facturerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturerActionPerformed

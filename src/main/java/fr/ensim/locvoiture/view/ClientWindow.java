@@ -88,8 +88,10 @@ public class ClientWindow extends MvcView {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        titre.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        titre.setBackground(new java.awt.Color(255, 255, 0));
+        titre.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         titre.setText("Nouveau client");
+        titre.setOpaque(true);
         getContentPane().add(titre, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setLayout(new java.awt.GridLayout(9, 2));

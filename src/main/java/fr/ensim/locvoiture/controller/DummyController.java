@@ -113,5 +113,10 @@ public class DummyController extends AbstractController{
     public boolean modifierClient(Client c) {
         return true;
     }
+
+    @Override
+    public void annulerContrat(Contrat contrat) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

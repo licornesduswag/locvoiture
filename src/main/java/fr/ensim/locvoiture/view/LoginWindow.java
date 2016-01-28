@@ -58,7 +58,7 @@ public class LoginWindow extends MvcView {
         
         JLabel tmp = titre;
         tmp.setOpaque(true);
-        tmp.setBackground(Color.CYAN);
+        tmp.setBackground(Color.YELLOW);
         //TODO changer la taille du texte Connexion
         this.add(tmp);
         

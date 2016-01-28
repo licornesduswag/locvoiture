@@ -46,4 +46,5 @@ public abstract class AbstractController extends AbstractObservable{
     public abstract boolean modifierContrat(Contrat c);
     public abstract boolean modifierClient(Client c);
     public abstract Agent getConnectedAgent();
+    public abstract void annulerContrat(Contrat contrat);
 }

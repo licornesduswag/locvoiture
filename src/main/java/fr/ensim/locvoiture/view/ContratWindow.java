@@ -143,8 +143,10 @@ public class ContratWindow extends MvcView {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
 
-        titre.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        titre.setBackground(new java.awt.Color(255, 255, 0));
+        titre.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         titre.setText("Nouveau contrat");
+        titre.setOpaque(true);
         getContentPane().add(titre, java.awt.BorderLayout.PAGE_START);
 
         jButton1.setBackground(new java.awt.Color(51, 255, 51));
@@ -242,23 +244,27 @@ public class ContratWindow extends MvcView {
             c.setDateDebut(formatter.parse(debutLocation.getText()));
         } catch (Exception ex) {
             javax.swing.JOptionPane.showMessageDialog(null,"Date de début de location incorrecte"); 
+            return;
         }
         try {
             c.setDateFin(formatter.parse(finLocation.getText()));
         } catch (Exception ex) {
             javax.swing.JOptionPane.showMessageDialog(null,"Date de fin de location incorrecte"); 
+            return;
         }
         
         try {
             c.setKilometrageFin(Integer.parseInt(arriveeKm.getText()));
         } catch (Exception ex) {
             javax.swing.JOptionPane.showMessageDialog(null,"Kilométrage d'arrivée incorrect"); 
+            return;
         }
         
         try {
             c.setKilometrageDebut(Integer.parseInt(departKm.getText()));
         } catch (Exception ex) {
             javax.swing.JOptionPane.showMessageDialog(null,"Kilométrage de départ incorrect"); 
+            return;
         }
         
         if(comboClient.getSelectedIndex() == 0)
