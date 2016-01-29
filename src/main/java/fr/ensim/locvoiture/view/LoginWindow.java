@@ -30,6 +30,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -41,7 +42,7 @@ public class LoginWindow extends MvcView {
     
     
     private JTextField login;
-    private JTextField password;
+    private JPasswordField password;
     private JButton connexion;
     private JLabel titre = new JLabel("Veuillez vous connecter", JLabel.CENTER);
     
@@ -71,7 +72,7 @@ public class LoginWindow extends MvcView {
         tmp = new JLabel("Password", JLabel.CENTER);
         this.add(tmp);
         
-        password = new JTextField();
+        password = new JPasswordField();
         this.add(password);
         
         connexion = new JButton("Se connecter");

@@ -47,6 +47,8 @@ public class MainWindow extends MvcView {
         initComponents();
         this.login = login;
         this.mdp = mdp;
+        controller.addObserver(this);
+        
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.addRow(new Object[]{"1", "2", new Integer(3), "4", new Integer(5)});
@@ -71,7 +73,19 @@ public class MainWindow extends MvcView {
     
     @Override
     public void update() {
+        int voiture = jTable1.getSelectedRow();
+        int contrat = jTable2.getSelectedRow();
         initVoitureTable();
+        jTable1.getSelectionModel().setSelectionInterval(voiture, voiture);
+        Voiture v = (Voiture)jTable1.getModel().getValueAt(voiture, 0);
+        try{
+            jTable2.getSelectionModel().setSelectionInterval(contrat, contrat);
+        }
+        catch(Exception e)
+        {
+            
+        }
+        fillContrats(v);
     }
     
     public void fillContrats(Voiture v)

@@ -65,6 +65,12 @@ public class PostgresBDD implements BDDInterface {
     @Override
     public void saveContrat(Contrat contrat) {
         try {
+            //saveClient(contrat.getClient());
+            
+            //
+            
+            
+            
             PreparedStatement prep = conn.prepareStatement("INSERT INTO contrats VALUES (DEFAULT,?,?,?,?,?,?,?)");
             
             //prep.setInt(1, contrat.getId());

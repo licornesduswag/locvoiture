@@ -202,6 +202,7 @@ public class ClientWindow extends MvcView {
         Client c = new Client(nom.getText(), prenom.getText(), dNaissance, lNaissance,
         new InfoPermis(numPermis, dDelivrance, lDelivrance, vDelivrance));
 
+        controller.addClient(c);
         contrat.setClient(c);
         
         if(ajouter)

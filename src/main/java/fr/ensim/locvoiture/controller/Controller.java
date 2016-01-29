@@ -114,6 +114,7 @@ public class Controller extends AbstractController{
 
     @Override
     public void annulerContrat(Contrat contrat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        bdd.removeContrat(contrat);
+        notifyObservers();
     }
 }
